@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/hero";
 import { JourneySelector } from "@/components/sections/journey-selector";
 import { ProjectPreview } from "@/components/sections/project-preview";
 import Link from "next/link";
+import { socialLinks } from "@/content/social";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
@@ -17,7 +18,10 @@ export default function Home() {
       <ProjectPreview />
       <section className="section shell music-home-teaser">
         <div><p className="eyebrow">Mi faceta artística</p><h2>También vivo la música <em>desde el escenario.</em></h2></div>
-        <div><p>La interpretación vocal, las presentaciones en vivo y la producción cultural forman parte de mi recorrido. Conocé mis videos musicales y cómo conecto el arte con la comunicación.</p><Link href="/musica" className="button button-secondary">Explorar Música y escenario ↗</Link></div>
+        <div><p>La interpretación vocal, las presentaciones en vivo y la producción cultural forman parte de mi recorrido. Conocé mis videos musicales y cómo conecto el arte con la comunicación.</p><div className="music-teaser-actions">
+          <Link href="/musica" className="button button-secondary">Explorar Música y escenario ↗</Link>
+          <a href={socialLinks.instagram} className="text-link" target="_blank" rel="noopener noreferrer">Instagram @tammatadia ↗</a>
+        </div></div>
       </section>
       <section className="section shell home-statement">
         <p className="eyebrow">Mi enfoque</p>

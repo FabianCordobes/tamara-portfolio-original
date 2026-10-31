@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { socialLinks, instagramHandle } from "@/content/social";
 
 export function Footer() {
   return (
@@ -21,7 +22,10 @@ export function Footer() {
         <div className="footer-music-link"><p className="eyebrow">Música y escenario</p><p>¿Buscás una cantante para una actuación, casting o proyecto artístico? <Link className="text-link" href="/musica">Conocé mis videos y mi perfil musical ↗</Link></p></div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Tamara Atadía</span>
-          <a href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <nav className="footer-social-links" aria-label="Redes sociales de Tamara">
+            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Tamara (abre en otra pestaña)">LinkedIn ↗</a>
+            <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Instagram de Tamara, ${instagramHandle} (abre en otra pestaña)`}>Instagram {instagramHandle} ↗</a>
+          </nav>
           <Link href="/">Volver al inicio ↑</Link>
         </div>
       </div>

@@ -713,3 +713,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
  .music-frame--portrait { max-width:330px; }
  .music-track { min-height:76px; }
 }
+
+
+/* Official Instagram integration */
+.music-social-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-block: 1.5rem;
+  margin-block: 1.25rem;
+  border-block: 1px solid var(--color-line);
+}
+.music-social-strip p:not(.eyebrow) { margin: .4rem 0; max-width: 56ch; }
+.music-social-strip strong { color: var(--color-text); }
+.contact-social-actions, .music-teaser-actions, .professional-social-links, .footer-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .85rem 1.5rem;
+  align-items: center;
+}
+.contact-social-actions .button { margin-top: .75rem; }
+.professional-social-links { align-items: flex-start; flex-direction: column; }
+.music-teaser-actions { margin-top: 1rem; }
+.music-teaser-actions .button { margin-top: 0; }
+.footer-social-links { gap: .5rem 1.4rem; }
+.footer-social-links a { min-height: 44px; display: inline-flex; align-items: center; }
+@media (max-width: 480px) {
+  .music-social-strip .button { width: 100%; }
+  .contact-social-actions .button { flex: 1 1 100%; }
+}

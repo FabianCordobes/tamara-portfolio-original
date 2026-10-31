@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { ContactForm } from "@/components/sections/contact-form";
+import { socialLinks, instagramHandle } from "@/content/social";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Contactá a Tamara Atadía para consultas sobre servicios de marketing y comunicación o para compartir oportunidades laborales.",
+  description: "Contactá a Tamara Atadía para servicios de comunicación y marketing, oportunidades profesionales, castings y colaboraciones musicales.",
   alternates: { canonical: "/contacto" }
 };
 
@@ -37,8 +38,11 @@ export default async function ContactoPage({ searchParams }: ContactPageProps) {
           <div>
             <p className="eyebrow">Canal directo</p>
             <h2>Hablemos de tu <em>propuesta.</em></h2>
-            <p>Podés contactarme por LinkedIn y contarme brevemente el objetivo, el contexto y qué tipo de colaboración buscás.</p>
-            <a className="button button-primary" href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">Contactar por LinkedIn ↗</a>
+            <p>Contame brevemente el objetivo, el contexto y qué tipo de colaboración buscás. Podés escribirme por LinkedIn o enviarme un mensaje directo a Instagram, especialmente si se trata de música o proyectos artísticos.</p>
+            <div className="contact-social-actions">
+              <a className={`button ${isMusic ? "button-secondary" : "button-primary"}`} href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Contactar a Tamara por LinkedIn (abre en otra pestaña)">LinkedIn ↗</a>
+              <a className={`button ${isMusic ? "button-primary" : "button-secondary"}`} href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Contactar a Tamara por Instagram, @tammatadia (abre en otra pestaña)">Instagram {instagramHandle} ↗</a>
+            </div>
             <p className="contact-context">Si escribís por una oportunidad laboral o artística, incluí el tipo de propuesta, fechas aproximadas y una breve descripción.</p>
           </div>
           {emailEnabled && <ContactForm key={defaultIntent} enabled defaultIntent={defaultIntent} />}

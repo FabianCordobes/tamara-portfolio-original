@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { MusicPlayer } from "@/components/sections/music-player";
 import { CtaBand } from "@/components/sections/cta-band";
+import { socialLinks, instagramHandle } from "@/content/social";
 
 export const metadata: Metadata = {
   title: "Música y escenario | Cantante y comunicación",
@@ -28,6 +29,13 @@ export default function MusicaPage() {
           <p>La música no es un complemento de mi perfil: forma parte de mi identidad. Mis experiencias musicales y culturales conviven con el trabajo en marketing, comunicación y coordinación de proyectos.</p>
           <p>Puedo aportar interpretación vocal a una propuesta artística y, cuando el proyecto lo necesita, sumar una mirada de difusión, posicionamiento, comunicación con el público y producción.</p>
         </div>
+      </section>
+      <section className="shell music-social-strip" aria-label="Instagram artístico">
+        <div>
+          <p className="eyebrow">También en Instagram</p>
+          <p>Seguime en <strong>{instagramHandle}</strong> para conectar con mi actividad artística y comunicarte por mensaje directo.</p>
+        </div>
+        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="button button-secondary" aria-label="Ver el Instagram de Tamara Atadía, @tammatadia (abre en otra pestaña)">Ver Instagram ↗</a>
       </section>
       <div id="videos" className="music-anchor"><MusicPlayer /></div>
       <section className="section shell music-synergy" aria-labelledby="music-synergy-heading">
