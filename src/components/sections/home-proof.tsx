@@ -3,7 +3,7 @@ import { cases } from "@/content/cases";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import { ProjectPhoto } from "@/components/ui/project-photo";
 
-const featuredIDs = ["tamms", "full-medios", "brush-fest"] as const;
+const featuredIDs = ["full-medios", "tamms", "brush-fest"] as const;
 const featuredCases = featuredIDs.map(id => {
   const project = cases.find(item => item.id === id);
   if (!project) {
@@ -17,8 +17,8 @@ export function HomeProof() {
     <section className="section shell home-proof" aria-labelledby="home-proof-heading">
       <div className="home-proof-intro">
         <p className="eyebrow">Experiencia aplicada</p>
-        <h2 id="home-proof-heading">Experiencia que se traduce <em>en decisiones.</em></h2>
-        <p>De un emprendimiento propio a medios y producciones culturales. Conocé el desafío, el alcance y el rol en cada proyecto.</p>
+        <h2 id="home-proof-heading">Proyectos que muestran <em>mi experiencia.</em></h2>
+        <p>Medios, emprendimientos y producción cultural: tres contextos donde asumí responsabilidades distintas. Conocé mi trabajo en cada uno.</p>
       </div>
       <div className="home-proof-list">
         {featuredCases.map(project => (
