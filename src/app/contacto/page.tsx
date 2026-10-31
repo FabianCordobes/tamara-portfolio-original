@@ -6,7 +6,7 @@ import { getFormspreeEndpoint } from "@/lib/formspree";
 
 export const metadata: Metadata = {
   title: "Contacto para proyectos, empleo y propuestas musicales",
-  description: "Contactá a Tamara Atadía por servicios de comunicación, oportunidades laborales, castings y colaboraciones musicales."
+  description: "Contactá a Tamara Atadía por servicios de comunicación, oportunidades laborales, castings y colaboraciones musicales.",
   alternates: { canonical: "/contacto" }
 };
 

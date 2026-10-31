@@ -5,7 +5,7 @@ import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
   title: "Proyectos reales de marketing, medios y eventos",
-  description: "Casos de Tamara Atadía en medios, marketing, emprendimientos y producción de eventos: Full Medios, Milpos, Strong Fitness Gym, Tamms y Brush Fest."
+  description: "Casos de Tamara Atadía en medios, marketing, emprendimientos y producción de eventos: Full Medios, Milpos, Strong Fitness Gym, Tamms y Brush Fest.",
   alternates: { canonical: "/proyectos" }
 };
 

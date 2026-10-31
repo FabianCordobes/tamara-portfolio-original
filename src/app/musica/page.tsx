@@ -8,7 +8,7 @@ import { socialLinks } from "@/content/social";
 
 export const metadata: Metadata = {
   title: "Cantante, actuaciones en vivo y repertorio",
-  description: "Escuchá interpretaciones de Tamara Atadía: rock, melódico y folklore. Videos de actuaciones en vivo y fotografías de escenario."
+  description: "Escuchá interpretaciones de Tamara Atadía: rock, melódico y folklore. Videos de actuaciones en vivo y fotografías de escenario.",
   alternates: { canonical: "/musica" }
 };
 

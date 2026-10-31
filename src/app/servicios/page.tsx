@@ -6,7 +6,7 @@ import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
   title: "Servicios de marketing y comunicación para marcas",
-  description: "Estrategia de marketing, contenidos, desarrollo comercial y coordinación de proyectos para marcas, emprendimientos y organizaciones."
+  description: "Estrategia de marketing, contenidos, desarrollo comercial y coordinación de proyectos para marcas, emprendimientos y organizaciones.",
   alternates: { canonical: "/servicios" }
 };
 

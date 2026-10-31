@@ -9,7 +9,7 @@ import { socialLinks } from "@/content/social";
 
 export const metadata: Metadata = {
   title: "Trayectoria en marketing, medios y gestión de equipos",
-  description: "Experiencia de Tamara Atadía en comunicación, marketing, desarrollo comercial, medios, coordinación y gestión de equipos."
+  description: "Experiencia de Tamara Atadía en comunicación, marketing, desarrollo comercial, medios, coordinación y gestión de equipos.",
   alternates: { canonical: "/perfil-profesional" }
 };
 
