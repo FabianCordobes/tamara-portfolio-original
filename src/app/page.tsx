@@ -19,7 +19,7 @@ export default function Home() {
           <h2 id="home-music-heading">Una voz, <em>distintas canciones.</em></h2>
         </div>
         <div>
-          <p>Melódico, folklore y una canción inédita: una selección de interpretaciones para escuchar online.</p>
+          <p>Interpretaciones de música melódica, folklore y chacarera. Una muestra de mi recorrido sobre el escenario.</p>
           <div className="music-teaser-actions">
             <Link href="/musica" className="button button-secondary">Ver mis videos ↗</Link>
             <a href={socialLinks.instagram} className="text-link" target="_blank" rel="noopener noreferrer">Instagram @tammatadia ↗</a>
