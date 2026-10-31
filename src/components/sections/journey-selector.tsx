@@ -1,51 +1,39 @@
 import Link from "next/link";
 
 const journeys = [
-  {
-    number: "01",
-    eyebrow: "PARA MARCAS, EMPRENDIMIENTOS Y ORGANIZACIONES",
-    title: "Necesito impulsar un proyecto",
-    description: "Estrategia de marketing y comunicación, desarrollo comercial y coordinación de iniciativas desde la idea hasta su ejecución.",
-    points: ["Servicios adaptados al desafío", "Casos de proyectos reales", "Contacto para solicitar una propuesta"],
-    href: "/servicios",
-    action: "Explorar servicios"
-  },
-  {
-    number: "02",
-    eyebrow: "PARA EMPRESAS Y RECLUTADORES",
-    title: "Quiero conocer su experiencia",
-    description: "Una mirada transversal que combina planificación, liderazgo de equipos, comunicación y gestión de proyectos.",
-    points: ["Trayectoria en distintos sectores", "Competencias y formación", "Contacto por oportunidades laborales"],
-    href: "/perfil-profesional",
-    action: "Ver perfil profesional"
-  },
-  {
-    number: "03",
-    eyebrow: "PARA BANDAS, CASTINGS Y PROYECTOS MUSICALES",
-    title: "Busco una cantante con visión artística",
-    description: "Conocé mis interpretaciones en vivo y una mirada que une canto, comunicación y producción cultural.",
-    points: ["Videos con interpretaciones vocales", "Experiencia musical y cultural", "Contacto para propuestas artísticas"],
-    href: "/musica",
-    action: "Escuchar mis interpretaciones"
-  }
+  { number: "01", kind: "Empresas y emprendimientos",
+    title: "Necesito impulsar una marca",
+    description: "Comunicación, desarrollo comercial y planificación para hacer avanzar tu negocio.",
+    href: "/servicios", action: "Conocer servicios" },
+  { number: "02", kind: "Selección de talento",
+    title: "Busco una profesional",
+    description: "Mi experiencia en coordinación, marketing, ventas y gestión de equipos.",
+    href: "/perfil-profesional", action: "Ver trayectoria" },
+  { number: "03", kind: "Bandas, castings y escenarios",
+    title: "Busco una cantante",
+    description: "Interpretaciones en vivo y proyectos que combinan arte con comunicación.",
+    href: "/musica", action: "Ver actuaciones" }
 ];
 
 export function JourneySelector() {
   return (
     <section id="elegir-recorrido" className="section shell journeys-section" aria-labelledby="journeys-heading">
       <div className="section-heading">
-        <p className="eyebrow">Tres caminos, una identidad</p>
-        <h2 id="journeys-heading">¿De qué manera podemos <em>conectar?</em></h2>
-        <p>Elegí qué estás buscando y encontrá la información que necesitás, sin rodeos.</p>
+        <p className="eyebrow">Elegí tu recorrido</p>
+        <h2 id="journeys-heading">¿Qué te trae <em>por acá?</em></h2>
       </div>
       <div className="journey-grid journey-grid-three">
-        {journeys.map((journey) => (
+        {journeys.map(journey => (
           <article className="journey-card" key={journey.number}>
-            <div className="journey-card-heading"><span className="journey-index">{journey.number}</span><span className="eyebrow">{journey.eyebrow}</span></div>
-            <h3>{journey.title}</h3>
-            <p>{journey.description}</p>
-            <ul>{journey.points.map((point) => <li key={point}>{point}</li>)}</ul>
-            <Link href={journey.href} className="button button-secondary">{journey.action} <span aria-hidden="true">↗</span></Link>
+            <Link href={journey.href} className="journey-card-link">
+              <span className="journey-card-heading">
+                <span className="journey-index">{journey.number}</span>
+                <span className="eyebrow">{journey.kind}</span>
+              </span>
+              <h3>{journey.title}</h3>
+              <p>{journey.description}</p>
+              <span className="journey-action">{journey.action} <span aria-hidden="true">↗</span></span>
+            </Link>
           </article>
         ))}
       </div>
