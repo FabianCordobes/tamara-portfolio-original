@@ -12,7 +12,7 @@ const checks = [
   ["/servicios", ["Estrategia de marketing", "Desarrollo comercial", "Producción y coordinación"]],
   ["/proyectos", ["Full Medios", "Milpos", "Strong Fitness Gym", "Tamms", "Brush Fest"]],
   ["/perfil-profesional", ["LinkedIn", "Sobre mí", "Formación"]],
-  ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Galería fotográfica"]],
+  ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Portfolio fotográfico"]],
   ["/contacto?motivo=musica", ["Formulario de contacto", "Propuesta artística o casting", "contact-form-title"]],
   ["/contacto?motivo=empleo", ["Formulario de contacto", "Oportunidad profesional"]],
   ["/contacto?motivo=servicio", ["Formulario de contacto", "Proyecto o consultoría"]]
