@@ -18,7 +18,7 @@ const checks = [
   ["/servicios", ["Estrategia y desarrollo de negocios", "Producción y dirección de proyectos", "Comunicación y posicionamiento", "Desarrollo comercial", "Dirección y coordinación"]],
   ["/metodologia", ["Comprender", "Definir", "Diseñar", "Producir y ejecutar", "Evaluar", "Evolucionar"]],
   ["/proyectos", ["Full Medios", "Milpos", "Strong Fitness Gym", "Tamms", "Brush Fest", "Planificación y ejecución"]],
-  ["/perfil-profesional", ["LinkedIn", "Sobre mí", "Trayectoria", "Formación"]],
+  ["/perfil-profesional", ["LinkedIn", "Perfil", "Trayectoria", "Formación"]],
   ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Momentos del recorrido artístico", "Universo creativo"]],
   ["/contacto?motivo=musica", ["Formulario de contacto", "Colaboración artística", "contact-form-title"]],
   ["/contacto?motivo=empleo", ["Formulario de contacto", "Oportunidad profesional"]],
