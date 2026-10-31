@@ -5,8 +5,8 @@ import { socialLinks, instagramHandle } from "@/content/social";
 import { getFormspreeEndpoint } from "@/lib/formspree";
 
 export const metadata: Metadata = {
-  title: "Contacto | Consultas profesionales y artísticas",
-  description: "Formulario para contactar a Tamara Atadía por proyectos, búsquedas laborales o propuestas musicales.",
+  title: "Contacto para proyectos, empleo y propuestas musicales",
+  description: "Contactá a Tamara Atadía por servicios de comunicación, oportunidades laborales, castings y colaboraciones musicales."
   alternates: { canonical: "/contacto" }
 };
 

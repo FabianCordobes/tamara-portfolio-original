@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
+import { track } from "@vercel/analytics";
 import { intents, validateContact, type ContactData, type ContactErrors } from "@/lib/contact";
 
 type Delivery = "direct" | "email" | "unavailable";
@@ -58,6 +59,8 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
       const result = await response.json();
       if (!response.ok) throw new Error(result.message || "No se pudo entregar el mensaje.");
       setState("success");
+      // Only the selected intent is tracked. Never send contact details or message text.
+      track("contact_form_success", { intent: data.intent });
       setNotice("Tu consulta se registró correctamente. Gracias por escribir.");
       setErrors({});
       form.reset();

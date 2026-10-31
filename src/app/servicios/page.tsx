@@ -5,8 +5,8 @@ import { Methodology } from "@/components/sections/methodology";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
-  title: "Servicios de marketing, comunicación y gestión de proyectos",
-  description: "Servicios de marketing, posicionamiento, desarrollo comercial y producción para organizaciones.",
+  title: "Servicios de marketing y comunicación para marcas",
+  description: "Estrategia de marketing, contenidos, desarrollo comercial y coordinación de proyectos para marcas, emprendimientos y organizaciones."
   alternates: { canonical: "/servicios" }
 };
 

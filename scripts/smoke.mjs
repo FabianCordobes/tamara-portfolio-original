@@ -14,7 +14,7 @@ const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "star
 });
 
 const checks = [
-  ["/", ["Necesito impulsar una marca", "Busco una profesional", "Busco una cantante"]],
+  ["/", ["Necesito impulsar una marca", "Busco una profesional", "Busco una cantante", "Consultar por un proyecto", "Proyectos reales", "Full Medios", "Brush Fest"]],
   ["/servicios", ["Estrategia de marketing", "Desarrollo comercial", "Producción y coordinación"]],
   ["/proyectos", ["Full Medios", "Milpos", "Strong Fitness Gym", "Tamms", "Brush Fest"]],
   ["/perfil-profesional", ["LinkedIn", "Sobre mí", "Formación"]],
@@ -43,6 +43,13 @@ try {
     assert.ok(html.includes('id="contenido"'), route);
     assert.ok(html.includes('aria-label="Principal"'), route);
     for (const value of snippets) assert.ok(html.includes(value), `${route}: ${value}`);
+    if (route === "/") {
+      assert.ok(html.includes("home-proof"), "Home has factual proof section");
+      assert.ok(html.includes("/contacto?motivo=servicio"), "Home provides a direct contact route");
+      assert.ok(html.includes("contact_cta_click"), "Home CTA analytics are wired");
+      assert.ok(html.includes('name="twitter:card"'), "Social card metadata is present");
+      assert.ok(html.includes('property="og:image"'), "Open Graph image metadata is present");
+    }
     if (route === "/musica") {
       assert.ok(html.includes("sandbox="), "Preview sandbox");
       assert.ok(!html.includes("Abrir este video"), "No external video action");
@@ -67,6 +74,14 @@ try {
       assert.ok(html.includes('id="formulario"'), "Direct contact anchor");
     }
     console.log("PASS", route);
+  }
+
+  for (const imagePath of ["/opengraph-image", "/twitter-image"]) {
+    const response = await fetch(host + imagePath);
+    assert.equal(response.status, 200, `Social image endpoint ${imagePath}`);
+    assert.ok(response.headers.get("content-type")?.startsWith("image/png"), `Social image PNG ${imagePath}`);
+    assert.ok((await response.arrayBuffer()).byteLength > 10000, `Social image has content ${imagePath}`);
+    console.log("PASS", imagePath);
   }
 
   const endpoint = host + "/api/contact";

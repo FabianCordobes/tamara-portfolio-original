@@ -7,8 +7,8 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { socialLinks } from "@/content/social";
 
 export const metadata: Metadata = {
-  title: "Música y escenario | Canto y comunicación",
-  description: "Interpretaciones en vivo de Tamara Atadía. Una propuesta artística que conecta canto, comunicación y producción cultural.",
+  title: "Cantante, actuaciones en vivo y repertorio",
+  description: "Escuchá interpretaciones de Tamara Atadía: rock, melódico y folklore. Videos de actuaciones en vivo y fotografías de escenario."
   alternates: { canonical: "/musica" }
 };
 
