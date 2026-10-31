@@ -120,7 +120,7 @@ export const cases: PortfolioCase[] = [
     ],
     headline: "De una idea a un emprendimiento con identidad propia.",
     challenge: "Emprendimiento gastronómico propio que, desde 2021, incorporó propuestas artísticas y eventos como evolución de una misma actividad comercial.",
-    role: "Creación y gestión integral del negocio, organización operativa y comercial, coordinación de un equipo de hasta cinco empleados según el relato aportado, contratación de artistas y producción de experiencias.",
+    role: "Creación y gestión integral del negocio, organización operativa y comercial, coordinación de un equipo de hasta cinco empleados, contratación de artistas y producción de experiencias.",
     steps: [
       "Crear el concepto y desarrollar la propuesta gastronómica.",
       "Definir identidad, comunicación y prioridades comerciales.",

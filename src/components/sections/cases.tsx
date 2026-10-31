@@ -29,14 +29,6 @@ export function Cases() {
                 <summary><span>Contexto, decisiones y ejecución <span className="sr-only">en {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
                 <div className="case-expanded case-process">
                   <div>
-                    <p className="eyebrow">Desafío y contexto</p>
-                    <p>{project.challenge}</p>
-                  </div>
-                  <div>
-                    <p className="eyebrow">Responsabilidad y alcance</p>
-                    <p>{project.role}</p>
-                  </div>
-                  <div>
                     <p className="eyebrow">Planificación y ejecución</p>
                     <ul className="case-process-list">
                       {project.steps.map(step => <li key={step}>{step}</li>)}

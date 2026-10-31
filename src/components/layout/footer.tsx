@@ -12,7 +12,7 @@ export function Footer() {
           </div>
           <nav aria-label="Enlaces de cierre" className="footer-quick-links">
             <Link href="/contacto#formulario">Contacto</Link>
-            <Link href="/perfil-profesional#experiencia">Trayectoria</Link>
+            <Link href="/perfil-profesional#trayectoria">Trayectoria</Link>
             <Link href="/musica">Universo creativo</Link>
             <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">Instagram {instagramHandle} ↗</a>
