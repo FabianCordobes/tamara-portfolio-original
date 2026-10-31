@@ -26,7 +26,7 @@ export function Header() {
     <header className="site-header">
       <div className="shell header-inner">
         <Link href="/" className="wordmark" onClick={() => setOpen(false)}>
-          TAMARA ATADÍA<span>ESTRATEGIA & COMUNICACIÓN</span>
+          TAMARA ATADÍA<span>COMUNICACIÓN · MÚSICA · PROYECTOS</span>
         </Link>
         <nav aria-label="Principal" className="desktop-nav">
           {navigation.map((item) => (

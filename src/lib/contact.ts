@@ -1,6 +1,6 @@
 export type ContactData = { name: string; email: string; intent: string; message: string; consent: boolean };
 export type ContactErrors = Partial<Record<keyof ContactData, string>>;
-export const intents = ["Proyecto o consultoría", "Oportunidad profesional", "Otra consulta"];
+export const intents = ["Proyecto o consultoría", "Oportunidad profesional", "Propuesta artística o casting", "Otra consulta"];
 export function validateContact(data: ContactData): ContactErrors {
  const errors: ContactErrors = {};
  if(data.name.trim().length < 2 || data.name.length > 100) errors.name = "Escribí tu nombre (entre 2 y 100 caracteres).";

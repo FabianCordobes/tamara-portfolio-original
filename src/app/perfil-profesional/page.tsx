@@ -21,6 +21,7 @@ export default function PerfilProfesionalPage() {
         <a className="button button-secondary" href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
       </PageIntro>
       <Profile />
+      <section className="section shell professional-music-bridge"><p className="eyebrow">Perfil multidisciplinario</p><h2>Experiencia profesional y <em>expresión artística.</em></h2><p>Mi trayectoria incluye tanto la comunicación y gestión comercial como el canto y la producción cultural. También me interesan propuestas que necesiten combinar interpretación, marketing y trabajo en equipo.</p><Link href="/musica" className="text-link">Ver mi perfil musical y videos ↗</Link></section>
       <SelectedExperience />
       <Education />
       <ProjectPreview />

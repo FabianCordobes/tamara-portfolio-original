@@ -651,3 +651,65 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
  .journey-card, .preview-card, .service-card { transition: none; }
 }
+
+
+/* Artistic portfolio - accessible embedded Drive video selection */
+.music-home-teaser, .music-identity, .professional-music-bridge { display:grid; gap:1.5rem; }
+.music-home-teaser h2, .music-identity h2, .professional-music-bridge h2 { max-width:24ch; }
+.music-home-teaser p:not(.eyebrow), .music-identity p:not(.eyebrow), .professional-music-bridge p:not(.eyebrow) { max-width:56ch; font-size:1.05rem; }
+.music-home-teaser .button { margin-top:1rem; }
+.music-home-teaser { background:linear-gradient(120deg, rgba(194,160,93,.06), transparent 65%); }
+.hero-music-link { font-size:.9rem; margin-top:.4rem; }
+.music-anchor { scroll-margin-top: 6rem; }
+.music-player-layout { display:grid; gap:2rem; align-items:start; }
+.music-player-screen { min-width:0; border:1px solid var(--color-line); border-radius:1rem; overflow:hidden; background:#1b1b1a; }
+.music-player-stage { display:grid; place-items:center; padding:1rem; background: radial-gradient(circle at 50% 30%, #383128 0, #101010 68%); min-height:340px; }
+.music-frame { width:100%; overflow:hidden; border-radius:.6rem; background:#080808; box-shadow:0 16px 40px rgba(0,0,0,.4); }
+.music-frame--portrait { max-width:390px; aspect-ratio:9/16; }
+.music-frame--landscape { max-width:100%; aspect-ratio:16/9; }
+.music-frame iframe { display:block; width:100%; height:100%; border:0; }
+.music-current-info { padding:clamp(1.5rem,3vw,2.5rem); }
+.music-current-info h3 { font-size:clamp(1.6rem,3vw,2.2rem); margin:.7rem 0; }
+.music-current-info p:not(.eyebrow) { max-width:50ch; }
+.music-player-sidebar { min-width:0; }
+.music-playlist { display:grid; margin-top:1.3rem; }
+.music-track { background:transparent; color:var(--color-text); text-align:left; display:flex; align-items:center; gap:1rem; width:100%; min-height:92px; border:0; border-top:1px solid var(--color-line); padding:1rem .6rem; cursor:pointer; font:inherit; }
+.music-track:last-child { border-bottom:1px solid var(--color-line); }
+.music-track:hover, .music-track--active { background:rgba(194,160,93,.11); }
+.music-track--active { box-shadow:inset 3px 0 var(--color-accent); }
+.music-track-index { font-family:Georgia,serif; color:var(--color-accent); font-size:1.2rem; flex-shrink:0; }
+.music-track-copy { display:grid; gap:.3rem; flex:1; }
+.music-track-copy strong { font-size:1.05rem; line-height:1.25; }
+.music-track-copy small { color:var(--color-muted); font-size:.82rem; }
+.music-track-arrow { color:var(--color-accent); }
+.music-drive-note { font-size:.87rem; margin-top:1.5rem; max-width:50ch; }
+.music-synergy h2 { max-width:21ch; }
+.music-synergy-grid { display:grid; gap:1.5rem; margin-top:2rem; }
+.music-synergy-grid article { border-top:1px solid var(--color-line); padding-top:1.6rem; }
+.music-synergy-grid h3 { margin:1rem 0; font-size:1.6rem; }
+.music-synergy-grid p { max-width:40ch; }
+.music-case-links { margin-top:2rem; }
+.music-case-links a { color:var(--color-accent); text-decoration:underline; text-underline-offset:.2rem; }
+.footer-music-link { border-top:1px solid var(--color-line); margin-top:2.5rem; padding-top:1.5rem; }
+.footer-music-link .text-link { display:inline-flex; font-weight:600; }
+.journey-card:nth-child(3) { border-top:3px solid #ae897d; background:linear-gradient(155deg,#27201f,#1b1b19 78%); }
+@media (min-width:640px) {
+ .music-synergy-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .contact-choice-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .contact-choice strong { font-size:clamp(1.1rem,1.6vw,1.4rem); }
+ .music-home-teaser, .music-identity, .professional-music-bridge { grid-template-columns:1fr 1fr; gap:2.5rem; }
+}
+@media (min-width:1024px) {
+ .journey-grid-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .journey-grid-three .journey-card h3 { font-size:clamp(1.5rem,2vw,2rem); }
+ .music-player-layout { grid-template-columns:minmax(0,1.45fr) minmax(300px,1fr); gap:3rem; }
+ .desktop-nav { gap:.9rem; font-size:.8rem; }
+}
+@media (min-width:1024px) and (max-width:1180px) {
+ .header-cta { display:none; }
+}
+@media (max-width:639px) {
+ .music-player-stage { padding:.75rem; min-height:300px; }
+ .music-frame--portrait { max-width:330px; }
+ .music-track { min-height:76px; }
+}

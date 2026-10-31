@@ -10,16 +10,16 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://tamara-portfolio-original.vercel.app"),
   title: {
-    default: "Tamara Atadía | Estrategia, comunicación y proyectos",
+    default: "Tamara Atadía | Marketing, comunicación y música",
     template: "%s | Tamara Atadía"
   },
-  description: "Tamara Atadía: estrategia de marketing y comunicación, desarrollo comercial, gestión de proyectos y experiencia profesional.",
+  description: "Tamara Atadía: estrategia de marketing y comunicación, desarrollo comercial, gestión de proyectos, canto y producción artística.",
   openGraph: {
     type: "website",
     locale: "es_AR",
     siteName: "Tamara Atadía",
     title: "Tamara Atadía | Estrategia, comunicación y proyectos",
-    description: "Servicios para marcas y proyectos, y un recorrido profesional para empresas y reclutadores."
+    description: "Servicios, trayectoria profesional y faceta artística: música, interpretación vocal y proyectos culturales."
   },
   robots: { index: true, follow: true }
 };

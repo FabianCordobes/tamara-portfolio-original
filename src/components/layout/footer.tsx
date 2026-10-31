@@ -18,6 +18,7 @@ export function Footer() {
             <Link className="button button-secondary" href="/contacto?motivo=empleo">Quiero contactar por empleo ↗</Link>
           </div>
         </div>
+        <div className="footer-music-link"><p className="eyebrow">Música y escenario</p><p>¿Buscás una cantante para una actuación, casting o proyecto artístico? <Link className="text-link" href="/musica">Conocé mis videos y mi perfil musical ↗</Link></p></div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Tamara Atadía</span>
           <a href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
