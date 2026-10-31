@@ -6,6 +6,7 @@ const manifest = JSON.parse(readFileSync(new URL("../package.json", import.meta.
 assert.equal(manifest.dependencies["embla-carousel-react"], "8.6.0", "Embla React library pinned");
 assert.equal(manifest.dependencies["embla-carousel-autoplay"], "8.6.0", "Official Embla autoplay plugin pinned");
 
+assert.equal(manifest.dependencies.react, manifest.dependencies["react-dom"], "React and React DOM versions must stay synchronized");
 const port = 4321;
 const host = `http://127.0.0.1:${port}`;
 const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "-p", String(port)], {
