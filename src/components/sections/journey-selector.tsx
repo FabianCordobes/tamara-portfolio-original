@@ -1,38 +1,50 @@
 import Link from "next/link";
 
-const journeys = [
-  { number: "01", kind: "Empresas y emprendimientos",
-    title: "Necesito impulsar una marca",
-    description: "Estrategia de marca, comunicación comercial y ejecución orientada a objetivos.",
-    href: "/servicios", action: "Conocer servicios" },
-  { number: "02", kind: "Selección de talento",
-    title: "Busco una profesional",
-    description: "Trayectoria en marketing, coordinación operativa y conducción de equipos.",
-    href: "/perfil-profesional", action: "Ver trayectoria" },
-  { number: "03", kind: "Bandas, castings y escenarios",
-    title: "Busco una cantante",
-    description: "Muestras vocales, experiencia escénica y producción cultural.",
-    href: "/musica", action: "Ver actuaciones" }
+const needs = [
+  {
+    number: "01",
+    kind: "Estrategia y desarrollo",
+    title: "Quiero desarrollar o transformar mi negocio",
+    description: "Definir prioridades, analizar oportunidades y construir una propuesta de valor.",
+    href: "/servicios#estrategia",
+    action: "Explorar estrategia"
+  },
+  {
+    number: "02",
+    kind: "Producción y dirección",
+    title: "Necesito producir y dirigir un proyecto",
+    description: "Articular recursos, proveedores, personas y tiempos para concretar una idea.",
+    href: "/servicios#produccion",
+    action: "Explorar producción"
+  },
+  {
+    number: "03",
+    kind: "Comunicación y posicionamiento",
+    title: "Necesito fortalecer mi comunicación",
+    description: "Dar claridad a la identidad, los mensajes y la relación con cada público.",
+    href: "/servicios#comunicacion",
+    action: "Explorar comunicación"
+  }
 ];
 
 export function JourneySelector() {
   return (
     <section id="elegir-recorrido" className="section shell journeys-section" aria-labelledby="journeys-heading">
       <div className="section-heading">
-        <p className="eyebrow">Elegí tu recorrido</p>
-        <h2 id="journeys-heading">¿Qué te trae <em>por acá?</em></h2>
+        <p className="eyebrow">Empecemos por tu necesidad</p>
+        <h2 id="journeys-heading">¿Qué necesitás <em>hacer realidad?</em></h2>
       </div>
       <div className="journey-grid journey-grid-three">
-        {journeys.map(journey => (
-          <article className="journey-card" key={journey.number}>
-            <Link href={journey.href} className="journey-card-link">
+        {needs.map(item => (
+          <article className="journey-card" key={item.number}>
+            <Link href={item.href} className="journey-card-link">
               <span className="journey-card-heading">
-                <span className="journey-index">{journey.number}</span>
-                <span className="eyebrow">{journey.kind}</span>
+                <span className="journey-index">{item.number}</span>
+                <span className="eyebrow">{item.kind}</span>
               </span>
-              <h3>{journey.title}</h3>
-              <p>{journey.description}</p>
-              <span className="journey-action">{journey.action} <span aria-hidden="true">↗</span></span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <span className="journey-action">{item.action} <span aria-hidden="true">↗</span></span>
             </Link>
           </article>
         ))}

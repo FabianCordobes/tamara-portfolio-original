@@ -1,7 +1,9 @@
 export const navigation = [
-  { href: "/servicios", label: "Servicios" },
+  { href: "/perfil-profesional", label: "Perfil" },
+  { href: "/servicios", label: "Soluciones" },
   { href: "/proyectos", label: "Proyectos" },
-  { href: "/perfil-profesional", label: "Trayectoria" },
-  { href: "/musica", label: "Música" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/metodologia", label: "Metodología" },
+  { href: "/contacto", label: "Contacto" }
 ] as const;
+
+export const creativeNavigation = { href: "/musica", label: "Universo creativo" } as const;

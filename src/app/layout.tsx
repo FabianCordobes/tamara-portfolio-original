@@ -12,15 +12,15 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://tamara-portfolio-original.vercel.app"),
   title: {
-    default: "Tamara Atadía | Marketing, comunicación, proyectos y canto",
+    default: "Tamara Atadía | Estrategia, producción y dirección de proyectos",
     template: "%s | Tamara Atadía"
   },
-  description: "Conocé a Tamara Atadía: marketing, comunicación, coordinación de proyectos y canto. Experiencia real, servicios y propuestas artísticas.",
+  description: "Tamara Atadía: estrategia, producción, dirección de proyectos, desarrollo comercial y comunicación. Conocé su experiencia y proyectos reales.",
   openGraph: {
     type: "website",
     locale: "es_AR",
     siteName: "Tamara Atadía",
-    title: "Tamara Atadía | Estrategia, comunicación y proyectos",
+    title: "Tamara Atadía | Estrategia, producción y dirección",
     description: "Servicios, trayectoria profesional y faceta artística: música, interpretación vocal y proyectos culturales."
   },
   twitter: { card: "summary_large_image", title: "Tamara Atadía | Comunicación, proyectos y canto", description: "Experiencia profesional y artística, casos reales y contacto." },
@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             name: "Tamara Atadía",
             url: "https://tamara-portfolio-original.vercel.app",
             sameAs: [socialLinks.instagram, socialLinks.linkedin],
-            knowsAbout: ["Marketing", "Comunicación", "Producción cultural", "Música", "Canto"]
+            knowsAbout: ["Estrategia", "Producción de proyectos", "Desarrollo comercial", "Comunicación", "Dirección de proyectos", "Producción cultural", "Música"]
           }).replace(/</g, "\\u003c") }}
         />
         <Header />

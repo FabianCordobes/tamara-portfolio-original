@@ -7,7 +7,7 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { socialLinks } from "@/content/social";
 
 export const metadata: Metadata = {
-  title: "Cantante, actuaciones en vivo y repertorio",
+  title: "Universo creativo: canto, música y producción cultural",
   description: "Escuchá interpretaciones de Tamara Atadía: rock, melódico y folklore. Videos de actuaciones en vivo y fotografías de escenario.",
   alternates: { canonical: "/musica" }
 };
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 export default function MusicaPage() {
   return (
     <>
-      <PageIntro eyebrow="Música / Interpretaciones vocales"
+      <PageIntro eyebrow="Universo creativo / Música y expresión"
         title={<>Mi voz, <em>en escena.</em></>}
-        description="Interpretaciones en vivo que recorren el rock, la canción melódica y el folklore. Escuchá registros auténticos de distintas presentaciones.">
+        description="Una dimensión de mi recorrido: canto, interpretación, experiencias culturales y trabajo con públicos. Explorá registros auténticos de rock, canción melódica y folklore.">
         <Link href="#videos" className="button button-primary">Escuchar actuaciones ↓</Link>
         <Link href="#fotos" className="text-link">Ver fotografías ↓</Link>
       </PageIntro>
