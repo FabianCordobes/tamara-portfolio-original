@@ -19,7 +19,7 @@ const photos = [
     category: "Retrato"
   },
   {
-    src: "/images/music/canto-escenario-mar-de-ajo.jpg",
+    src: "/images/music/tamara-escenario-mar-de-ajo.jpg",
     width: 1066, height: 1600,
     alt: "Tamara cantando durante una presentación musical en Mar de Ajó",
     caption: "Presentación en Mar de Ajó",
