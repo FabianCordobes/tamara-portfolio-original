@@ -854,34 +854,6 @@ button, input, select, textarea { font-family: inherit; }
 }
 
 
-/* Stage photography — deliberate layout and accessible carousel controls */
-.music-gallery-section { padding-block:clamp(3rem,6vw,5.5rem); }
-.music-gallery-heading { display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap; gap:1.5rem; margin-bottom:1.5rem; }
-.music-gallery-heading h2 { max-width:20ch; }
-.music-gallery-heading p:not(.eyebrow) { max-width:49ch; }
-.music-gallery-controls { display:flex; align-items:center; gap:1rem; }
-.music-gallery-controls button { width:48px; height:48px; border:1px solid #796847; border-radius:50%; background:transparent; color:var(--color-text); cursor:pointer; font-size:1.35rem; }
-.music-gallery-controls button:hover, .music-gallery-controls button:focus-visible { background:var(--color-accent); color:#141414; }
-.music-gallery-controls span { color:var(--color-text); font-size:.875rem; min-width:3rem; text-align:center; font-variant-numeric:tabular-nums; }
-.music-gallery-stage { background:#1e1b19; border:1px solid var(--color-line); border-radius:1rem; padding:clamp(1rem,2.5vw,2rem); display:grid; justify-items:center; outline-offset:6px; }
-.music-gallery-slide { width:100%; display:grid; justify-items:center; margin:0; }
-.music-gallery-slide[hidden] { display:none!important; }
-.music-gallery-image { width:auto; height:auto; max-width:min(100%,650px); max-height:min(75vh,650px); object-fit:contain; border-radius:.6rem; }
-.music-gallery-slide figcaption { color:var(--color-text); margin-top:1rem; font-size:.93rem; text-align:center; }
-.music-gallery-pagination { display:flex; gap:.4rem; justify-content:center; align-items:center; margin-top:1rem; }
-.music-gallery-dot { width:44px; height:44px; background:transparent; border:0; cursor:pointer; display:grid; place-items:center; }
-.music-gallery-dot::after { content:""; width:10px; height:10px; border-radius:50%; background:#73706a; transition:background .2s,transform .2s; }
-.music-gallery-dot.active::after { background:var(--color-accent); transform:scale(1.25); }
-@media (max-width:640px) {
-  .music-gallery-heading { align-items:start; }
-  .music-gallery-controls { width:100%; justify-content:space-between; }
-  .music-gallery-image { max-height:62vh; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .music-gallery-dot::after { transition:none; }
-}
-
-
 /* Contact first: eliminate intermediate selection step */
 .contact-form-layout { display:grid; align-items:start; gap:clamp(2rem,4vw,4.5rem); padding-block:clamp(2rem,4vw,4rem); scroll-margin-top:7rem; }
 .contact-form-primary { background:#1d1d1b; border:1px solid #605a51; padding:clamp(1.5rem,4vw,3rem); box-shadow:0 24px 60px rgba(0,0,0,.13); }
@@ -909,20 +881,42 @@ button, input, select, textarea { font-family: inherit; }
 }
 
 
-/* Expanded editorial photo carousel */
-.music-gallery-stage { min-height:clamp(280px,42vw,670px); }
-.music-gallery-image { max-width:min(100%,840px); max-height:min(70vh,650px); }
-.music-gallery-slide figcaption { display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; justify-content:center; align-items:center; }
-.music-gallery-slide figcaption .eyebrow { font-size:.72rem; }
-.music-gallery-thumbnail-rail { display:flex; gap:.65rem; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x proximity; padding:.9rem .1rem 1.1rem; scrollbar-width:thin; }
-.music-gallery-thumb { position:relative; flex:0 0 104px; height:83px; padding:0; border:2px solid transparent; border-radius:.5rem; overflow:hidden; background:var(--color-surface); cursor:pointer; scroll-snap-align:start; opacity:.78; }
-.music-gallery-thumb img { object-fit:cover; width:100%; height:100%; display:block; }
-.music-gallery-thumb.active { border-color:var(--color-accent); opacity:1; }
-.music-gallery-thumb:hover { opacity:1; }
-.music-gallery-thumb:focus-visible { outline-offset:3px; opacity:1; }
-.music-gallery-hint { margin-top:.25rem; text-align:center; font-size:.86rem; }
-@media(max-width:639px) {
- .music-gallery-stage { min-height:260px; }
- .music-gallery-image { max-height:55vh; }
- .music-gallery-thumb { flex-basis:86px; height:72px; }
+
+
+/* Compact editorial proof: one entrance to the complete professional cases */
+.experience-proof {
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  align-items:center;
+  column-gap:clamp(2rem,5vw,5rem);
+  padding-block:clamp(3.2rem,6vw,6rem);
+  border-top:1px solid var(--color-line);
+}
+.experience-proof h2 { max-width:19ch; }
+.experience-proof-copy { max-width:47ch; }
+.experience-proof-copy p { font-size:clamp(1.05rem,1.5vw,1.2rem); line-height:1.7; margin-bottom:1.4rem; color:#d5d0c9; }
+.experience-proof .text-link { display:inline-flex; color:var(--color-accent); }
+
+/* Replace duplicated carousels with a short photographic story */
+.music-editorial-section { padding-block:clamp(3rem,6vw,5rem); }
+.music-editorial-heading { margin-bottom:clamp(1.4rem,3vw,2.4rem); }
+.music-editorial-heading h2 { max-width:22ch; }
+.music-editorial-heading p:not(.eyebrow) { max-width:59ch; }
+.music-editorial-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(.7rem,1.6vw,1.3rem); }
+.music-editorial-card { margin:0; min-width:0; background:#1b1917; border-radius:.65rem; overflow:hidden; border:1px solid var(--color-line); }
+.music-editorial-image { display:block; width:100%; aspect-ratio:4/5; height:auto; object-fit:cover; object-position:center 35%; }
+.music-editorial-card--featured .music-editorial-image { object-position:center; }
+.music-editorial-card figcaption { display:grid; gap:.25rem; padding:.85rem 1rem 1rem; }
+.music-editorial-card figcaption strong { color:var(--color-text); font-size:1.02rem; }
+.music-editorial-card figcaption span { color:var(--color-muted); font-size:.86rem; }
+@media(max-width:768px) {
+  .experience-proof { grid-template-columns:1fr; gap:1rem; }
+  .music-editorial-grid { grid-template-columns:1fr 1fr; }
+  .music-editorial-card:first-child { grid-column:1/-1; }
+  .music-editorial-card:first-child .music-editorial-image { aspect-ratio:5/3; }
+}
+@media(max-width:420px) {
+  .music-editorial-card figcaption { padding:.7rem; }
+  .music-editorial-card figcaption strong { font-size:.9rem; }
+  .music-editorial-card figcaption span { font-size:.78rem; }
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Methodology } from "@/components/sections/methodology";
-import { ProjectPreview } from "@/components/sections/project-preview";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
@@ -56,7 +55,6 @@ export default function ServiciosPage() {
         </div>
       </section>
       <Methodology />
-      <ProjectPreview />
       <CtaBand eyebrow="Consultas de servicios" title="¿Cuál es el desafío de tu proyecto?"
         description="Describí tu necesidad para evaluar un alcance de trabajo adecuado."
         href="/contacto?motivo=servicio#formulario" label="Enviar consulta" />

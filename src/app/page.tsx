@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/sections/hero";
 import { JourneySelector } from "@/components/sections/journey-selector";
-import { ProjectPreview } from "@/components/sections/project-preview";
-import { socialLinks } from "@/content/social";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -12,18 +10,14 @@ export default function Home() {
     <>
       <Hero />
       <JourneySelector />
-      <ProjectPreview />
-      <section className="section shell music-home-teaser" aria-labelledby="home-music-heading">
+      <section className="section shell experience-proof" aria-labelledby="experience-proof-heading">
         <div>
-          <p className="eyebrow">En el escenario</p>
-          <h2 id="home-music-heading">Una voz, <em>distintas canciones.</em></h2>
+          <p className="eyebrow">Experiencia aplicada</p>
+          <h2 id="experience-proof-heading">Más allá de las ideas, <em>la experiencia.</em></h2>
         </div>
-        <div>
-          <p>Interpretaciones de música melódica, folklore y chacarera. Una muestra de mi recorrido sobre el escenario.</p>
-          <div className="music-teaser-actions">
-            <Link href="/musica" className="button button-secondary">Ver mis videos ↗</Link>
-            <a href={socialLinks.instagram} className="text-link" target="_blank" rel="noopener noreferrer">Instagram @tammatadia ↗</a>
-          </div>
+        <div className="experience-proof-copy">
+          <p>Mi trabajo abarca medios de comunicación, iniciativas comerciales, emprendimientos y producción cultural. Cada experiencia aporta herramientas para afrontar desafíos diferentes.</p>
+          <Link href="/proyectos" className="text-link">Conocé algunos de mis trabajos ↗</Link>
         </div>
       </section>
     </>

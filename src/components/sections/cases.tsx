@@ -1,16 +1,15 @@
 import Image from "next/image";
 import { cases } from "@/content/cases";
-import { SectionHeading } from "@/components/ui/section-heading";
 export function Cases() {
   return (
-    <section id="proyectos" className="section cases-section">
+    <section id="proyectos" className="section cases-section" aria-labelledby="experiences-heading">
       <div className="shell">
-        <SectionHeading number="01" label="Casos de trabajo" title="Qué hice en cada proyecto." />
+        <h2 id="experiences-heading" className="sr-only">Experiencias documentadas</h2>
         <div className="case-list">
-          {cases.map((project, index) => (
+          {cases.map((project) => (
             <article key={project.id} id={`caso-${project.id}`} className={`case-study case-${project.id}`}>
               <div className="case-intro">
-                <div className="case-topline"><span className="eyebrow">0{index + 1} / {project.category}</span><span className="case-brand">{project.logo && <Image className="case-logo" src={project.logo} alt={`Logo de ${project.name}`} width={72} height={72} sizes="72px" />}<span className="case-name">{project.name}</span></span></div>
+                <div className="case-topline"><span className="eyebrow">{project.category}</span><span className="case-brand">{project.logo && <Image className="case-logo" src={project.logo} alt={`Logo de ${project.name}`} width={72} height={72} sizes="72px" />}<span className="case-name">{project.name}</span></span></div>
                 <p className="case-period">{project.period}</p>
                 {project.affiliation && <p className="eyebrow">{project.affiliation}</p>}
                 <h3>{project.headline}</h3>

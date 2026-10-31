@@ -4,7 +4,6 @@ import { PageIntro } from "@/components/layout/page-intro";
 import { Profile } from "@/components/sections/profile";
 import { SelectedExperience } from "@/components/sections/selected-experience";
 import { Education } from "@/components/sections/education";
-import { ProjectPreview } from "@/components/sections/project-preview";
 import { CtaBand } from "@/components/sections/cta-band";
 import { socialLinks } from "@/content/social";
 
@@ -26,7 +25,6 @@ export default function PerfilProfesionalPage() {
       <Profile />
       <SelectedExperience />
       <Education />
-      <ProjectPreview />
       <section className="section shell professional-music-bridge">
         <div><p className="eyebrow">Otro lado de mi recorrido</p><h2>También soy <em>cantante.</em></h2></div>
         <div><p>Conocé mis actuaciones y los proyectos culturales en los que participé.</p>
