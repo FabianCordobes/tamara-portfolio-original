@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -85,18 +85,18 @@ export function MusicGallery() {
   const [inView, setInView] = useState(false);
   const [tabVisible, setTabVisible] = useState(true);
   const galleryRef = useRef<HTMLElement>(null);
-  const autoplay = useRef(
+  const autoplay = useMemo(() =>
     Autoplay({
       delay: 5000,
       playOnInit: false,
       stopOnInteraction: false,
       stopOnMouseEnter: true,
       stopOnFocusIn: true
-    })
+    }), []
   );
   const [viewportRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "center", duration: 32 },
-    [autoplay.current]
+    [autoplay]
   );
 
   const shouldPlay = playChoice === "play" || (playChoice === "default" && motion === "regular");
@@ -144,8 +144,10 @@ export function MusicGallery() {
     if (!emblaApi) return;
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
-    onSelect();
+    let active = true;
+    queueMicrotask(() => { if (active) onSelect(); });
     return () => {
+      active = false;
       emblaApi.off("select", onSelect);
       emblaApi.off("reInit", onSelect);
     };
