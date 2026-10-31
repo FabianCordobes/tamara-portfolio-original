@@ -9,27 +9,36 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { socialLinks } from "@/content/social";
 
 export const metadata: Metadata = {
-  title: "Perfil profesional y trayectoria",
-  description: "Conocé la experiencia profesional de Tamara Atadía en marketing, comunicación, liderazgo, desarrollo comercial, medios y gestión de proyectos.",
+  title: "Trayectoria profesional",
+  description: "Conocé la trayectoria de Tamara Atadía en marketing, comunicación, ventas, medios, coordinación y proyectos culturales.",
   alternates: { canonical: "/perfil-profesional" }
 };
 
 export default function PerfilProfesionalPage() {
   return (
     <>
-      <PageIntro eyebrow="02 / Para empresas y reclutadores" title={<>Visión estratégica. <em>Capacidad de ejecución.</em></>} description="Mi recorrido integra comunicación, marketing, desarrollo comercial y coordinación de equipos en proyectos de diferentes sectores. Me interesa sumar esa mirada a nuevos desafíos profesionales.">
+      <PageIntro eyebrow="Perfil / Para empresas y reclutadores"
+        title={<>Comunicación, negocios y <em>gestión de equipos.</em></>}
+        description="Trabajé en medios, emprendimientos y proyectos comerciales. Me interesa aportar esa experiencia a equipos que necesiten organización, criterio y ejecución.">
         <Link className="button button-primary" href="/contacto?motivo=empleo">Contactar por una oportunidad ↗</Link>
-        <a className="button button-secondary" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+        <a className="text-link" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
       </PageIntro>
       <Profile />
-      <section className="section shell professional-music-bridge"><p className="eyebrow">Perfil multidisciplinario</p><h2>Experiencia profesional y <em>expresión artística.</em></h2><p>Mi trayectoria incluye tanto la comunicación y gestión comercial como el canto y la producción cultural. También me interesan propuestas que necesiten combinar interpretación, marketing y trabajo en equipo.</p><div className="professional-social-links">
-        <Link href="/musica" className="text-link">Ver mi perfil musical y videos ↗</Link>
-        <a href={socialLinks.instagram} className="text-link" target="_blank" rel="noopener noreferrer">Mi Instagram artístico @tammatadia ↗</a>
-      </div></section>
       <SelectedExperience />
       <Education />
       <ProjectPreview />
-      <CtaBand eyebrow="Oportunidades profesionales" title="¿Buscás sumar experiencia y compromiso a tu equipo?" description="Podés contactarme para compartir el rol, la empresa y el desafío que están abordando. El CV actualizado puede solicitarse por contacto." href="/contacto?motivo=empleo" label="Contactar a Tamara" />
+      <section className="section shell professional-music-bridge">
+        <div><p className="eyebrow">Otro lado de mi recorrido</p><h2>También soy <em>cantante.</em></h2></div>
+        <div><p>Conocé mis actuaciones y los proyectos culturales en los que participé.</p>
+          <div className="professional-social-links">
+            <Link href="/musica" className="text-link">Música y escenario ↗</Link>
+            <a href={socialLinks.instagram} className="text-link" target="_blank" rel="noopener noreferrer">Instagram @tammatadia ↗</a>
+          </div>
+        </div>
+      </section>
+      <CtaBand eyebrow="Selección de talento" title="¿Hay una posición en la que pueda sumar?"
+        description="Compartime el rol y la empresa para iniciar la conversación."
+        href="/contacto?motivo=empleo" label="Enviar propuesta laboral" />
     </>
   );
 }
