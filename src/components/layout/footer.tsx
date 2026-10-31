@@ -11,7 +11,7 @@ export function Footer() {
             <p className="footer-summary">Marketing, comunicación, producción cultural y canto.</p>
           </div>
           <nav aria-label="Enlaces de cierre" className="footer-quick-links">
-            <Link href="/contacto">Contacto</Link>
+            <Link href="/contacto#formulario">Contacto</Link>
             <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">Instagram {instagramHandle} ↗</a>
           </nav>

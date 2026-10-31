@@ -24,7 +24,7 @@ export function Header() {
         </Link>
         <nav aria-label="Principal" className="desktop-nav">
           {navigation.map(item => (
-            <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
+            <Link key={item.href} href={item.href === "/contacto" ? "/contacto#formulario" : item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
           ))}
         </nav>
         <button ref={toggle} type="button" className="menu-toggle" aria-expanded={open}
@@ -36,7 +36,7 @@ export function Header() {
       <nav id="mobile-navigation" aria-label="Navegación móvil" className="mobile-nav shell" hidden={!open}>
         <Link href="/" aria-current={pathname === "/" ? "page" : undefined} onClick={() => setOpen(false)}>Inicio</Link>
         {navigation.map(item => (
-          <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={() => setOpen(false)}>{item.label}</Link>
+          <Link key={item.href} href={item.href === "/contacto" ? "/contacto#formulario" : item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={() => setOpen(false)}>{item.label}</Link>
         ))}
       </nav>
     </header>

@@ -15,7 +15,7 @@ export function CtaBand({ eyebrow, title, description, href, label }: {
           <h2>{title}</h2>
           <p>{description}</p>
         </div>
-        <Link className="button button-primary" href={href}>{label} ↗</Link>
+        <Link className="button button-primary" href={href.startsWith("/contacto") && !href.includes("#") ? `${href}#formulario` : href}>{label} ↗</Link>
       </div>
     </section>
   );

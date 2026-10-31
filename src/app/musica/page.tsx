@@ -19,7 +19,7 @@ export default function MusicaPage() {
         title={<>Mi voz, <em>en escena.</em></>}
         description="Mi recorrido musical comprende rock, repertorio melódico y expresiones del folklore. Explorá mis presentaciones, fotografías y registros en directo.">
         <Link href="#videos" className="button button-primary">Ver videos ↓</Link>
-        <Link href="/contacto?motivo=musica" className="text-link">Convocatorias y colaboraciones ↗</Link>
+        <Link href="/contacto?motivo=musica#formulario" className="text-link">Convocatorias y colaboraciones ↗</Link>
       </PageIntro>
       <div id="videos" className="music-anchor"><MusicPlayer /></div>
       <MusicGallery />
@@ -37,7 +37,7 @@ export default function MusicaPage() {
       <CtaBand eyebrow="Castings · Presentaciones · Colaboraciones"
         title="¿Buscás una cantante para tu proyecto?"
         description="Compartí el repertorio, el formato previsto y las fechas de la convocatoria."
-        href="/contacto?motivo=musica" label="Enviar propuesta artística" />
+        href="/contacto?motivo=musica#formulario" label="Enviar propuesta artística" />
     </>
   );
 }

@@ -36,7 +36,7 @@ export default function ServiciosPage() {
       <PageIntro eyebrow="Servicios / Para marcas y organizaciones"
         title={<>Lo que necesitás resolver. <em>Cómo puedo aportar.</em></>}
         description="Cada intervención parte de un diagnóstico. El alcance se define según los objetivos del proyecto.">
-        <Link href="/contacto?motivo=servicio" className="button button-primary">Consultar por un proyecto ↗</Link>
+        <Link href="/contacto?motivo=servicio#formulario" className="button button-primary">Consultar por un proyecto ↗</Link>
         <Link href="/proyectos" className="text-link">Ver trabajos anteriores ↗</Link>
       </PageIntro>
       <section className="section shell" aria-labelledby="services-heading">
@@ -59,7 +59,7 @@ export default function ServiciosPage() {
       <ProjectPreview />
       <CtaBand eyebrow="Consultas de servicios" title="¿Cuál es el desafío de tu proyecto?"
         description="Describí tu necesidad para evaluar un alcance de trabajo adecuado."
-        href="/contacto?motivo=servicio" label="Enviar consulta" />
+        href="/contacto?motivo=servicio#formulario" label="Enviar consulta" />
     </>
   );
 }

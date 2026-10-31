@@ -20,7 +20,7 @@ export default function PerfilProfesionalPage() {
       <PageIntro eyebrow="Perfil / Para empresas y reclutadores"
         title={<>Comunicación, negocios y <em>gestión de equipos.</em></>}
         description="Trabajé en medios, emprendimientos y proyectos comerciales. Me interesa aportar esa experiencia a equipos que necesiten organización, criterio y ejecución.">
-        <Link className="button button-primary" href="/contacto?motivo=empleo">Contactar por una oportunidad ↗</Link>
+        <Link className="button button-primary" href="/contacto?motivo=empleo#formulario">Contactar por una oportunidad ↗</Link>
         <a className="text-link" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
       </PageIntro>
       <Profile />
@@ -38,7 +38,7 @@ export default function PerfilProfesionalPage() {
       </section>
       <CtaBand eyebrow="Selección de talento" title="¿Hay una posición en la que pueda sumar?"
         description="Compartime el rol y la empresa para iniciar la conversación."
-        href="/contacto?motivo=empleo" label="Enviar propuesta laboral" />
+        href="/contacto?motivo=empleo#formulario" label="Enviar propuesta laboral" />
     </>
   );
 }
