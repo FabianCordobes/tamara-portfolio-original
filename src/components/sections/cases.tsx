@@ -1,16 +1,15 @@
 import Image from "next/image";
 import { cases } from "@/content/cases";
-import { SectionHeading } from "@/components/ui/section-heading";
 export function Cases() {
   return (
-    <section id="proyectos" className="section cases-section">
+    <section id="proyectos" className="section cases-section" aria-labelledby="experiences-heading">
       <div className="shell">
-        <SectionHeading number="03" label="Proyectos seleccionados" title="Distintos desafíos. Un aporte concreto." />
+        <h2 id="experiences-heading" className="sr-only">Experiencias documentadas</h2>
         <div className="case-list">
-          {cases.map((project, index) => (
-            <article key={project.id} className={`case-study case-${project.id}`}>
+          {cases.map((project) => (
+            <article key={project.id} id={`caso-${project.id}`} className={`case-study case-${project.id}`}>
               <div className="case-intro">
-                <div className="case-topline"><span className="eyebrow">0{index + 1} / {project.category}</span><span className="case-brand">{project.logo && <Image className="case-logo" src={project.logo} alt={`Logo de ${project.name}`} width={72} height={72} sizes="72px" />}<span className="case-name">{project.name}</span></span></div>
+                <div className="case-topline"><span className="eyebrow">{project.category}</span><span className="case-brand">{project.logo && <Image className="case-logo" src={project.logo} alt={`Logo de ${project.name}`} width={72} height={72} sizes="72px" />}<span className="case-name">{project.name}</span></span></div>
                 <p className="case-period">{project.period}</p>
                 {project.affiliation && <p className="eyebrow">{project.affiliation}</p>}
                 <h3>{project.headline}</h3>
@@ -19,7 +18,7 @@ export function Cases() {
               </div>
               {project.results.length > 0 && <dl className="case-results">{project.results.map(result => <div key={`${result.value}-${result.label}`}><dt>{result.value}</dt><dd>{result.label}</dd></div>)}</dl>}
               <details className="case-details">
-                <summary><span>Conocer el trabajo <span className="sr-only">en {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
+                <summary><span>Ver proceso y material <span className="sr-only">de {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
                 <div className="case-expanded"><a className="case-social" href={project.instagram} target="_blank" rel="noopener noreferrer">Ver {project.name} en Instagram ↗</a></div>
                 {project.featuredProject && <div className="case-expanded">
                   <div><p className="eyebrow">{project.featuredProject.period}</p><h4>{project.featuredProject.name} — {project.featuredProject.title}</h4></div>

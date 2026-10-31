@@ -23,11 +23,12 @@ export async function POST(request: Request) {
  if(["name", "email", "intent", "message"].some(key => typeof body[key] !== "string") || typeof body.consent !== "boolean") return Response.json({ message: "Revisá los campos del formulario." }, { status: 400 });
  const data: ContactData = { name: (body.name as string).trim(), email: (body.email as string).trim(), intent: body.intent as string, message: (body.message as string).trim(), consent: body.consent as boolean };
  if(Object.keys(validateContact(data)).length) return Response.json({ message: "Revisá los campos del formulario." }, { status: 400 });
- const { RESEND_API_KEY, CONTACT_EMAIL_TO, CONTACT_EMAIL_FROM } = process.env;
- if(!RESEND_API_KEY || !CONTACT_EMAIL_TO || !CONTACT_EMAIL_FROM) return Response.json({ message: "El formulario no está disponible. Contactanos por WhatsApp." }, { status: 503 });
+ const { RESEND_API_KEY, CONTACT_EMAIL_FROM } = process.env;
+ const destination = process.env.CONTACT_EMAIL_TO || process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+ if(!RESEND_API_KEY || !destination || !CONTACT_EMAIL_FROM) return Response.json({ message: "El formulario no está disponible. Podés comunicarte desde los canales alternativos." }, { status: 503 });
  try {
-  const sent = await fetch("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ from: CONTACT_EMAIL_FROM, to: [CONTACT_EMAIL_TO], reply_to: data.email, subject: `Portfolio · ${data.intent}`, text: `Nombre: ${data.name}\nEmail: ${data.email}\nMotivo: ${data.intent}\n\n${data.message}` }), signal: AbortSignal.timeout(10000) });
+  const sent = await fetch("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ from: CONTACT_EMAIL_FROM, to: [destination], reply_to: data.email, subject: `Portfolio · ${data.intent}`, text: `Nombre: ${data.name}\nEmail: ${data.email}\nMotivo: ${data.intent}\n\n${data.message}` }), signal: AbortSignal.timeout(10000) });
   if(!sent.ok) throw new Error("delivery-failed");
   return Response.json({ ok: true });
- } catch { return Response.json({ message: "No pudimos enviar la consulta. Intentá nuevamente o usá WhatsApp." }, { status: 502 }); }
+ } catch { return Response.json({ message: "No pudimos enviar la consulta. Intentá nuevamente o contactá por LinkedIn." }, { status: 502 }); }
 }

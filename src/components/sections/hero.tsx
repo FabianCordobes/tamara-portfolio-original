@@ -1,34 +1,19 @@
-import { profile } from "@/content/profile";
 import { ButtonLink } from "@/components/ui/button";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
+
 export function Hero() {
   return (
-    <section id="inicio" className="shell hero">
+    <section id="inicio" className="shell hero hero-redesign">
       <div className="hero-copy">
-        <p className="eyebrow">Portfolio profesional / Estrategia en acción</p>
-        <h1>
-          Estrategia que
-          <br />
-          se convierte
-          <br />
-          en <em>acción.</em>
-        </h1>
-        <p className="hero-intro">{profile.intro}</p>
-        <div className="flex flex-wrap gap-3">
-          <ButtonLink href="#proyectos">Explorar experiencia</ButtonLink>
-          <ButtonLink href="#contacto" variant="secondary">
-            Conversemos
-          </ButtonLink>
+        <p className="eyebrow">Tamara Atadía / Comunicación · Gestión · Canto</p>
+        <h1>Comunicación con propósito. <em>Expresión con identidad.</em></h1>
+        <p className="hero-intro">Mi trayectoria abarca marketing, desarrollo comercial y producción cultural. Como cantante, traslado esa sensibilidad creativa al escenario.</p>
+        <div className="hero-actions">
+          <ButtonLink href="#elegir-recorrido">Encontrá lo que buscás ↓</ButtonLink>
+          <ButtonLink href="/musica" variant="secondary">Escuchame cantar ↗</ButtonLink>
         </div>
-        <p className="hero-signature">
-          Marketing y Comunicación · Gestión de proyectos
-        </p>
       </div>
       <MediaPlaceholder media={{ src: "/images/tamara-atadia.png", alt: "Retrato de Tamara Atadía", width: 1254, height: 1254 }} />
-      <div className="hero-bottom">
-        <span>TAMARA ATADÍA</span>
-        <span>Estrategia / Liderazgo / Creatividad / Ejecución</span>
-      </div>
     </section>
   );
 }

@@ -1,13 +1,11 @@
 export const profile = {
   name: "Tamara Atadía",
-  positioning:
-    "Marketing y Comunicación · Gestión de proyectos",
-  headline: "Estrategia que se convierte en acción.",
-  intro:
-    "Dirijo proyectos de comunicación y producción cultural, desde su definición hasta su ejecución. Mi trabajo reúne planificación, liderazgo de equipos, desarrollo comercial y gestión de prensa.",
+  positioning: "Estrategia comercial · Comunicación · Producción cultural",
+  headline: "Una trayectoria que combina criterio estratégico con capacidad de ejecución.",
+  intro: "Planifico iniciativas comerciales y de comunicación con foco en su implementación. Mi recorrido comprende coordinación operativa, desarrollo de negocios y producción cultural.",
   paragraphs: [
-    "Mi recorrido abarca medios, emprendimientos propios e iniciativas de alcance territorial. He desarrollado propuestas gastronómicas, espacios de formación y encuentros artísticos.",
-    "En el ámbito artístico, vinculo a los participantes con medios de comunicación mediante entrevistas y cobertura de sus presentaciones.",
+    "En Full Medios asumí tareas de coordinación operativa, además de participar en la capacitación comercial. En Milpos desarrollé acciones de comunicación territorial y vínculos con escuelas técnicas.",
+    "Como creadora de Tamms adquirí experiencia directa en gestión de negocios. Brush Fest amplió ese recorrido hacia la producción de encuentros culturales y la articulación de colaboradores."
   ],
-  disciplines: ["Estrategia", "Liderazgo", "Creatividad", "Ejecución"],
+  disciplines: ["Estrategia", "Coordinación", "Comunicación", "Producción"]
 };

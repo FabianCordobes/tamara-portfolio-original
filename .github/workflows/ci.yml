@@ -16,3 +16,5 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build
+      - name: Verify page journeys and navigation
+        run: node scripts/smoke.mjs
