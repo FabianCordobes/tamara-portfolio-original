@@ -11,3 +11,16 @@ updates:
         patterns:
           - next
           - eslint-config-next
+      react:
+        patterns:
+          - react
+          - react-dom
+    ignore:
+      # TS 7 is not supported by the current typescript-eslint toolchain.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
+      # Match this major to the actual Node runtime instead of jumping to Node 26.
+      - dependency-name: "@types/node"
+        update-types:
+          - version-update:semver-major
