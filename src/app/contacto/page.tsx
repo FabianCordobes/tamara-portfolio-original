@@ -25,17 +25,17 @@ export default async function ContactoPage({ searchParams }: ContactPageProps) {
   const defaultIntent = isMusic ? "Propuesta artística o casting" : isEmployment ? "Oportunidad profesional" : isService ? "Proyecto o consultoría" : "";
   const emailEnabled = Boolean(process.env.RESEND_API_KEY && process.env.CONTACT_EMAIL_FROM && process.env.CONTACT_EMAIL_TO);
   const note = isMusic
-    ? "Para una propuesta musical, contame el estilo, el formato y la fecha aproximada."
+    ? "En convocatorias musicales, indicá repertorio, modalidad de presentación y fechas tentativas."
     : isEmployment
-      ? "Para una búsqueda laboral, incluí el puesto, la empresa y la modalidad."
+      ? "En búsquedas laborales, precisá el puesto, la organización y la modalidad."
       : isService
-        ? "Para servicios, explicame brevemente qué necesitás resolver."
+        ? "Para consultas comerciales, describí el desafío principal o los objetivos."
         : "Elegí el motivo para que podamos empezar por lo importante.";
 
   return (
     <>
       <PageIntro eyebrow="Contacto" title={<>Hablemos de tu <em>propuesta.</em></>}
-        description="Elegí el motivo de tu consulta y el canal por el que prefieras escribirme." />
+        description="Seleccioná el tipo de propuesta. Después, elegí tu canal de contacto." />
       <section className="section shell contact-page" aria-label="Opciones de contacto">
         <div className="contact-choice-grid" aria-label="Motivo de contacto">
           {reasons.map(reason => (
