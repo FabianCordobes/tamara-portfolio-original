@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
 
 const port = 4321;
 const host = `http://127.0.0.1:${port}`;
@@ -41,8 +42,14 @@ try {
       assert.ok(html.includes("sandbox="), "Preview sandbox");
       assert.ok(!html.includes("Abrir este video"), "No external video action");
       assert.equal((html.match(/class="music-track /g) ?? []).length, 4, "Four public videos");
-      assert.equal((html.match(/class="music-editorial-card /g) ?? []).length, 3, "Three distinct artistic photographs");
-      assert.ok(!html.includes("music-gallery-thumbnail-rail"), "No redundant photo carousel");
+      assert.equal((html.match(/class="music-gallery-slide"/g) ?? []).length, 10, "Ten original gallery photographs");
+      assert.equal((html.match(/class="music-gallery-thumb /g) ?? []).length, 10, "Ten selectable thumbnails");
+      assert.ok(html.includes("Pausar avance automático"), "Autoplay can be paused");
+      assert.ok(html.includes("music-gallery-thumbnail-rail"), "Photo selector restored");
+      assert.ok(!html.includes("music-editorial-grid"), "Three-photo grid replaced");
+      for (const file of ["canto-escenario-colores.jpg","retrato-estudio-guitarra.jpg","tamara-escenario-mar-de-ajo.jpg","retrato-vinilos.jpg","actuacion-escenario.jpg","tamara-show-mar-de-ajo.jpg","duo-musical.jpg","actuacion-television.jpg","expresion-artistica.jpg","entrevista-television.jpg"]) {
+        assert.ok(existsSync(new URL(`../public/images/music/${file}`, import.meta.url)), `Photo asset exists: ${file}`);
+      }
     }
     assert.ok(!/cinco proyectos|ver los cinco proyectos|proyectos seleccionados/i.test(html), "No finite project counts or repeated selection");
     if (route === "/" || route === "/servicios" || route === "/perfil-profesional") {
