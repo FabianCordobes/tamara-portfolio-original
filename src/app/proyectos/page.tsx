@@ -6,14 +6,14 @@ import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
   title: "Proyectos y experiencia",
-  description: "Casos reales de marketing, comunicación, producción y desarrollo de proyectos de Tamara Atadía: Full Medios, Milpos, Strong Fitness Gym, Tamms y Brush Fest.",
+  description: "Casos reales de comunicación, marketing, desarrollo comercial y gestión de proyectos de Tamara Atadía.",
   alternates: { canonical: "/proyectos" }
 };
 
 export default function ProyectosPage() {
   return (
     <>
-      <PageIntro eyebrow="Proyectos / Experiencia real" title={<>Distintos desafíos. <em>Un aporte concreto.</em></>} description="Conocé experiencias en medios, gestión ambiental, fitness, emprendimientos y producción cultural. Cada caso muestra el contexto, mis responsabilidades y el trabajo realizado.">
+      <PageIntro eyebrow="Proyectos / Experiencia real" title={<>Distintos desafíos. <em>Un aporte concreto.</em></>} description="Conocé experiencias en comunicación, gestión ambiental, posicionamiento de negocios, emprendimientos y coordinación de eventos. Cada caso muestra el contexto, mis responsabilidades y el trabajo realizado.">
         <Link className="button button-secondary" href="/servicios">Ver servicios</Link>
         <Link className="button button-secondary" href="/perfil-profesional">Ver trayectoria profesional</Link>
       </PageIntro>

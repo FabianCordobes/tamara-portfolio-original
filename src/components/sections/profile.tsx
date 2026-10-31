@@ -6,7 +6,7 @@ export function Profile() {
       <SectionHeading
         number="01"
         label="Perfil"
-        title="Un recorrido entre medios, negocios y cultura."
+        title="Un recorrido entre comunicación, negocios y proyectos."
       />
       <div className="profile-grid">
         <p className="statement">

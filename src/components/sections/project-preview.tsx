@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cases } from "@/content/cases";
 
-const featuredIDs = ["full-medios", "tamms", "brush-fest"];
+const featuredIDs = ["full-medios", "milpos", "strong-gym"];
 const featured = featuredIDs.flatMap((id) => {
   const project = cases.find((item) => item.id === id);
   return project ? [project] : [];
@@ -15,7 +15,7 @@ export function ProjectPreview() {
         <div>
           <p className="eyebrow">Trabajos reales</p>
           <h2 id="featured-work-heading">Experiencia que habla <em>por sí misma.</em></h2>
-          <p>Proyectos de medios, emprendimientos y producción cultural que reflejan diferentes maneras de aportar valor.</p>
+          <p>Proyectos de comunicación, gestión comercial y desarrollo de negocios que reflejan distintas formas de generar valor.</p>
         </div>
         <Link className="text-link" href="/proyectos">Ver todos los proyectos ↗</Link>
       </div>
