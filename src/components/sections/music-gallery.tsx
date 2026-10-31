@@ -113,7 +113,7 @@ export function MusicGallery() {
     const element = galleryRef.current;
     if (!element) return;
 
-    if (!("IntersectionObserver" in window)) {
+    if (typeof IntersectionObserver === "undefined") {
       const timer = window.setTimeout(() => setInView(true), 0);
       return () => window.clearTimeout(timer);
     }
