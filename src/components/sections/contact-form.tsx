@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState, type FormEvent } from "react";
 import { track } from "@vercel/analytics";
 import { intents, validateContact, type ContactData, type ContactErrors } from "@/lib/contact";
@@ -26,6 +27,8 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
     const data: ContactData = {
       name: String(values.get("name") ?? "").trim(),
       email: String(values.get("email") ?? "").trim(),
+      company: String(values.get("company") ?? "").trim(),
+      siteUrl: String(values.get("siteUrl") ?? "").trim(),
       intent: String(values.get("intent") ?? ""),
       message: String(values.get("message") ?? "").trim(),
       consent: values.get("consent") === "on"
@@ -40,7 +43,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
 
     if (delivery === "email" && email) {
       const subject = encodeURIComponent(`Consulta desde el portafolio · ${data.intent}`);
-      const body = encodeURIComponent(`Nombre: ${data.name}\nEmail: ${data.email}\nMotivo: ${data.intent}\n\n${data.message}`);
+      const body = encodeURIComponent(`Nombre: ${data.name}\nEmail: ${data.email}\nOrganización: ${data.company || "No informada"}\nSitio: ${data.siteUrl || "No informado"}\nMotivo: ${data.intent}\n\n${data.message}`);
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
       setNotice("Se preparó un mensaje en tu aplicación de correo. Confirmá el envío desde allí.");
       status.current?.focus();
@@ -76,7 +79,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
     <form className="contact-form contact-form-primary" onSubmit={submit} noValidate aria-labelledby="contact-form-title" onFocus={() => { if (!startedAt.current) startedAt.current = Date.now(); }}>
       <div className="contact-form-heading">
         <p className="eyebrow">Formulario de contacto</p>
-        <h2 id="contact-form-title">Contame tu propuesta.</h2>
+        <h2 id="contact-form-title">Contame tu proyecto.</h2>
         <p>Usaré el correo que indiques para responder tu consulta.</p>
       </div>
       <fieldset disabled={!canSubmit || state === "pending"}>
@@ -92,6 +95,22 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
               {errors[name] && <p className="field-error" id={`${name}-error`}>{errors[name]}</p>}
             </div>
           ))}
+        </div>
+        <div className="form-grid">
+          <div className="form-field">
+            <label htmlFor="contact-company">Empresa u organización (opcional)</label>
+            <input id="contact-company" name="company" type="text" maxLength={120} autoComplete="organization"
+              placeholder="Nombre de la organización" aria-invalid={!!errors.company}
+              aria-describedby={errors.company ? "company-error" : undefined} />
+            {errors.company && <p className="field-error" id="company-error">{errors.company}</p>}
+          </div>
+          <div className="form-field">
+            <label htmlFor="contact-siteUrl">Sitio web (opcional)</label>
+            <input id="contact-siteUrl" name="siteUrl" type="url" inputMode="url" maxLength={300}
+              placeholder="https://..." aria-invalid={!!errors.siteUrl}
+              aria-describedby={errors.siteUrl ? "siteUrl-error" : undefined} />
+            {errors.siteUrl && <p className="field-error" id="siteUrl-error">{errors.siteUrl}</p>}
+          </div>
         </div>
         <div className="form-field">
           <label htmlFor="contact-intent">Tipo de consulta <span aria-hidden="true">*</span></label>
@@ -118,7 +137,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
           <span>Autorizo el uso de mis datos exclusivamente para responder esta consulta. <span aria-hidden="true">*</span></span>
         </label>
         {errors.consent && <p className="field-error" role="alert">{errors.consent}</p>}
-        <p id="contact-privacy" className="privacy-note">No se utilizarán tus datos con fines publicitarios.</p>
+        <p id="contact-privacy" className="privacy-note">Los datos se utilizan para responder esta consulta, no para enviar publicidad. Consultá la <Link href="/privacidad">información de privacidad</Link>.</p>
         <button className="button button-primary" type="submit">
           {state === "pending" ? "Enviando…" : delivery === "email" ? "Continuar al correo ↗" : "Enviar mensaje ↗"}
         </button>

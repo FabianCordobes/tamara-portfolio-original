@@ -3,10 +3,11 @@ import { PageIntro } from "@/components/layout/page-intro";
 import { ContactForm } from "@/components/sections/contact-form";
 import { socialLinks, instagramHandle } from "@/content/social";
 import { getFormspreeEndpoint } from "@/lib/formspree";
+import { intentByReason } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Contacto para proyectos, empleo y propuestas musicales",
-  description: "Contactá a Tamara Atadía por servicios de comunicación, oportunidades laborales, castings y colaboraciones musicales.",
+  title: "Contacto | Estrategia, producción y oportunidades",
+  description: "Conversemos sobre tu negocio, proyecto, producción, oportunidad laboral o colaboración artística con Tamara Atadía.",
   alternates: { canonical: "/contacto" }
 };
 
@@ -15,30 +16,22 @@ type ContactPageProps = { searchParams: Promise<{ motivo?: string | string[] }> 
 export default async function ContactoPage({ searchParams }: ContactPageProps) {
   const { motivo } = await searchParams;
   const reason = Array.isArray(motivo) ? motivo[0] : motivo;
-  const defaultIntent = reason === "musica"
-    ? "Propuesta artística o casting"
-    : reason === "empleo"
-      ? "Oportunidad profesional"
-      : reason === "servicio"
-        ? "Proyecto o consultoría"
-        : "";
+  const defaultIntent = (reason && intentByReason[reason]) || "";
   const publicEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || undefined;
   const canSendDirectly = Boolean(getFormspreeEndpoint(process.env.FORMSPREE_FORM_ID));
   const delivery = canSendDirectly ? "direct" as const : publicEmail ? "email" as const : "unavailable" as const;
 
   const guidance = reason === "musica"
-    ? { title: "Propuesta artística", detail: "Incluí repertorio, formato de presentación y fechas tentativas." }
+    ? { title: "Colaboración artística", detail: "Contame sobre el formato, el repertorio y las fechas tentativas." }
     : reason === "empleo"
-      ? { title: "Oferta laboral", detail: "Compartí el puesto, las responsabilidades y la modalidad de trabajo." }
-      : reason === "servicio"
-        ? { title: "Consulta comercial", detail: "Describí el proyecto, sus objetivos y el alcance esperado." }
-        : { title: "Una consulta clara", detail: "Indicá el motivo de tu mensaje y la información necesaria para evaluar tu propuesta." };
+      ? { title: "Oportunidad profesional", detail: "Compartí el rol, la organización y la modalidad prevista." }
+      : { title: "El comienzo de una conversación", detail: "No hace falta un presupuesto cerrado: explicame qué querés desarrollar y en qué etapa está." };
 
   return (
     <>
       <PageIntro eyebrow="Contacto / Nuevas oportunidades"
-        title={<>Presentá tu <em>propuesta.</em></>}
-        description="Completá el formulario para consultar por servicios, oportunidades laborales o colaboraciones artísticas." />
+        title={<>Conversemos sobre lo que <em>querés desarrollar.</em></>}
+        description="Contame el contexto de tu necesidad. Vamos a iniciar una conversación clara, sin formularios interminables ni promesas automáticas." />
       <section id="formulario" className="section shell contact-form-layout" aria-label="Enviar una consulta">
         <ContactForm key={defaultIntent} defaultIntent={defaultIntent} delivery={delivery} email={publicEmail} />
         <aside className="contact-side-info">

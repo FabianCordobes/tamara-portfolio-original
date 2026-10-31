@@ -3,13 +3,14 @@ import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Profile } from "@/components/sections/profile";
 import { SelectedExperience } from "@/components/sections/selected-experience";
+import { CareerTimeline } from "@/components/sections/career-timeline";
 import { Education } from "@/components/sections/education";
 import { CtaBand } from "@/components/sections/cta-band";
 import { socialLinks } from "@/content/social";
 import { ProjectPhoto } from "@/components/ui/project-photo";
 
 export const metadata: Metadata = {
-  title: "Trayectoria en marketing, medios y gestión de equipos",
+  title: "Perfil y trayectoria profesional: estrategia y producción",
   description: "Experiencia de Tamara Atadía en comunicación, marketing, desarrollo comercial, medios, coordinación y gestión de equipos.",
   alternates: { canonical: "/perfil-profesional" }
 };
@@ -18,12 +19,13 @@ export default function PerfilProfesionalPage() {
   return (
     <>
       <PageIntro eyebrow="Perfil / Para empresas y reclutadores"
-        title={<>Comunicación, negocios y <em>gestión de equipos.</em></>}
-        description="Trabajé en medios, emprendimientos y proyectos comerciales. Me interesa aportar esa experiencia a equipos que necesiten organización, criterio y ejecución.">
+        title={<>Una trayectoria que conecta <em>dirección y ejecución.</em></>}
+        description="Mi recorrido comenzó en la gestión de un negocio propio y se amplió hacia producción cultural, comunicación, desarrollo comercial y coordinación de proyectos.">
         <Link className="button button-primary" href="/contacto?motivo=empleo#formulario">Contactar por una oportunidad ↗</Link>
         <a className="text-link" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
       </PageIntro>
       <Profile />
+      <CareerTimeline />
       <SelectedExperience />
       <section className="section shell editorial-photo-feature professional-photo-feature" aria-labelledby="professional-photo-heading">
         <ProjectPhoto

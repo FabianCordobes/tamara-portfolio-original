@@ -3,11 +3,11 @@ import { cases } from "@/content/cases";
 import { TrackedLink } from "@/components/ui/tracked-link";
 import { ProjectPhoto } from "@/components/ui/project-photo";
 
-const featuredIDs = ["full-medios", "brush-fest"] as const;
+const featuredIDs = ["full-medios", "tamms", "brush-fest"] as const;
 const featuredCases = featuredIDs.map(id => {
   const project = cases.find(item => item.id === id);
-  if (!project || project.results.length === 0) {
-    throw new Error(`El caso destacado ${id} necesita un resultado documentado.`);
+  if (!project) {
+    throw new Error(`No existe el caso destacado ${id}.`);
   }
   return project;
 });
@@ -17,8 +17,8 @@ export function HomeProof() {
     <section className="section shell home-proof" aria-labelledby="home-proof-heading">
       <div className="home-proof-intro">
         <p className="eyebrow">Experiencia aplicada</p>
-        <h2 id="home-proof-heading">Proyectos reales, <em>trabajo concreto.</em></h2>
-        <p>Estos ejemplos muestran responsabilidades asumidas y alcances documentados en medios y producción cultural.</p>
+        <h2 id="home-proof-heading">Proyectos que muestran <em>mi experiencia.</em></h2>
+        <p>Medios, emprendimientos y producción cultural: tres contextos donde asumí responsabilidades distintas. Conocé mi trabajo en cada uno.</p>
       </div>
       <div className="home-proof-list">
         {featuredCases.map(project => (
@@ -37,8 +37,8 @@ export function HomeProof() {
               )}
             </div>
             <div className="home-proof-outcome">
-              <strong>{project.results[0].value}</strong>
-              <span>{project.results[0].label}</span>
+              <strong className="home-proof-label">Mi aporte</strong>
+              <span>{project.conclusion}</span>
               <TrackedLink
                 href={`/proyectos#caso-${project.id}`}
                 analyticsEvent="case_cta_click"

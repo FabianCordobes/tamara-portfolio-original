@@ -14,7 +14,7 @@ export default function ProyectosPage() {
     <>
       <PageIntro eyebrow="Experiencia aplicada"
         title={<>Experiencia que se traduce <em>en acción.</em></>}
-        description="Algunas experiencias de mi recorrido profesional, desde medios de comunicación hasta iniciativas comerciales y culturales. Cada caso refleja el contexto, las responsabilidades asumidas y el trabajo realizado." />
+        description="De un negocio propio a medios y producciones culturales: cada caso presenta su contexto, mis responsabilidades y el trabajo realizado. Las cifras sin documentación quedan pendientes de verificación." />
       <Cases />
       <CtaBand eyebrow="Conocés mi trabajo" title="¿Querés explorar una colaboración?"
         description="Contame qué tipo de participación estás buscando."

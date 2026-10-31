@@ -80,12 +80,16 @@ export async function POST(request: Request) {
 
   const data: ContactData = {
     name: (body.name as string).trim(),
+    company: typeof body.company === "string" ? body.company.trim() : "",
+    siteUrl: typeof body.siteUrl === "string" ? body.siteUrl.trim() : "",
     email: (body.email as string).trim(),
     intent: body.intent as string,
     message: (body.message as string).trim(),
     consent: body.consent as boolean
   };
-  if (Object.keys(validateContact(data)).length) {
+  if ((body.company !== undefined && typeof body.company !== "string") ||
+      (body.siteUrl !== undefined && typeof body.siteUrl !== "string") ||
+      Object.keys(validateContact(data)).length) {
     return json({ message: "Revisá los campos del formulario." }, 400);
   }
 
@@ -99,6 +103,8 @@ export async function POST(request: Request) {
   form.set("name", data.name);
   form.set("email", data.email); // Formspree uses this field as notification Reply-To.
   form.set("intent", data.intent);
+  if (data.company) form.set("company", data.company);
+  if (data.siteUrl) form.set("siteUrl", data.siteUrl);
   form.set("message", data.message);
   form.set("subject", `Portafolio · ${data.intent}`);
   form.set("consent", "Autorizado para responder esta consulta");

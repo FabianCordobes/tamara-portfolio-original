@@ -17,6 +17,8 @@ export type PortfolioCase = {
   role: string;
   steps: string[];
   results: { value: string; label: string }[];
+  /** Quantitative data kept in source until evidence and attribution are confirmed. */
+  verifiedResults?: boolean;
   conclusion: string;
 };
 
@@ -101,7 +103,7 @@ export const cases: PortfolioCase[] = [
     id: "tamms",
     name: "Tamms",
     category: "Emprendimiento propio / Desarrollo de negocio",
-    period: "2020 – 2024",
+    period: "2020 – 2023",
     instagram: "https://www.instagram.com/tammsoficial/",
     logo: "/images/logos/tamms.jpg",
     highlights: [
@@ -117,15 +119,15 @@ export const cases: PortfolioCase[] = [
       }
     ],
     headline: "De una idea a un emprendimiento con identidad propia.",
-    challenge: "Desarrollé un emprendimiento gastronómico que amplió su propuesta con actividades formativas y encuentros presenciales.",
-    role: "Definición de identidad, dirección de la operación y articulación de equipos, programación de actividades y desarrollo comercial.",
+    challenge: "Emprendimiento gastronómico propio que, desde 2021, incorporó propuestas artísticas y eventos como evolución de una misma actividad comercial.",
+    role: "Creación y gestión integral del negocio, organización operativa y comercial, coordinación de un equipo de hasta cinco empleados, contratación de artistas y producción de experiencias.",
     steps: [
       "Crear el concepto y desarrollar la propuesta gastronómica.",
       "Definir identidad, comunicación y prioridades comerciales.",
       "Organizar los equipos y la operación cotidiana.",
-      "Coordinar encuentros y actividades complementarias en el espacio."
+      "Incorporar contratación artística y producción de eventos como evolución del negocio."
     ],
-    results: [{ value: "2020–2024", label: "período de desarrollo del emprendimiento" }],
+    results: [{ value: "2020–2023", label: "período declarado del emprendimiento" }],
     conclusion: "Experiencia directa en creación, gestión y evolución de un negocio."
   },
   {

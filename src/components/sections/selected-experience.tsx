@@ -7,7 +7,7 @@ export function SelectedExperience() {
       <SectionHeading
         number="02"
         label="Otros ámbitos de experiencia"
-        title="Otros sectores en los que trabajé."
+        title="Experiencias que amplían la mirada."
       />
       <div className="grid gap-4 md:grid-cols-2">
         {experience.map((e) => (

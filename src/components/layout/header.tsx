@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { navigation } from "@/content/navigation";
+import { navigation, creativeNavigation } from "@/content/navigation";
 
 export function Header() {
   const pathname = usePathname();
@@ -20,12 +20,13 @@ export function Header() {
     <header className="site-header">
       <div className="shell header-inner">
         <Link href="/" className="wordmark" onClick={() => setOpen(false)} aria-label="Tamara Atadía, ir al inicio">
-          TAMARA ATADÍA<span>COMUNICACIÓN · MÚSICA · PROYECTOS</span>
+          TAMARA ATADÍA<span>ESTRATEGIA · PRODUCCIÓN · COMUNICACIÓN</span>
         </Link>
         <nav aria-label="Principal" className="desktop-nav">
           {navigation.map(item => (
             <Link key={item.href} href={item.href === "/contacto" ? "/contacto#formulario" : item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
           ))}
+          <Link href={creativeNavigation.href} className="creative-nav-link" aria-current={pathname === creativeNavigation.href ? "page" : undefined}>{creativeNavigation.label}</Link>
         </nav>
         <button ref={toggle} type="button" className="menu-toggle" aria-expanded={open}
           aria-controls="mobile-navigation" aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -38,6 +39,7 @@ export function Header() {
         {navigation.map(item => (
           <Link key={item.href} href={item.href === "/contacto" ? "/contacto#formulario" : item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={() => setOpen(false)}>{item.label}</Link>
         ))}
+        <Link href={creativeNavigation.href} className="creative-nav-link" aria-current={pathname === creativeNavigation.href ? "page" : undefined} onClick={() => setOpen(false)}>{creativeNavigation.label}</Link>
       </nav>
     </header>
   );
