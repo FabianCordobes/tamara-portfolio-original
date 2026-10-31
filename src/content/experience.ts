@@ -3,22 +3,22 @@ import type { Experience } from "@/types/portfolio";
 export const experience: Experience[] = [
   {
     name: "Movia",
-    category: "Branding · Identidad de marca",
-    description: "Participación en la construcción inicial de marca y el desarrollo de sus primeras bases de identidad."
+    category: "Branding · Identidad",
+    description: "Participación en la etapa inicial de la marca, con aportes a sus criterios de identidad."
   },
   {
     name: "Costa Acuática",
-    category: "Experiencias · Recreación · Comercialización",
-    description: "Diseño y ejecución de propuestas recreativas con un equipo profesional, conectando experiencia del público y comercialización."
+    category: "Recreación · Operaciones",
+    description: "Diseño de experiencias recreativas, coordinación de su ejecución y apoyo en tareas de comercialización."
   },
   {
     name: "Experiencia comercial",
-    category: "Ventas · Negociación · Equipos",
-    description: "Experiencia en venta directa, medicina prepaga, formación de equipos y coordinación comercial para conectar propuestas con oportunidades de negocio."
+    category: "Ventas · Formación",
+    description: "Trayectoria en venta directa y medicina prepaga. Capacitación de equipos, negociación y seguimiento de oportunidades."
   },
   {
-    name: "Coordinación y producción de eventos",
-    category: "Operación · Equipos · Comunicación",
-    description: "Planificación de actividades presenciales, organización de recursos, coordinación de equipos, gestión de prensa y apoyo comercial."
+    name: "Producción de eventos",
+    category: "Logística · Prensa",
+    description: "Organización de actividades presenciales: gestión de recursos, asignación de roles, coordinación operativa y prensa."
   }
 ];
