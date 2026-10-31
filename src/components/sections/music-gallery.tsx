@@ -25,12 +25,12 @@ export function MusicGallery() {
   };
 
   return (
-    <section className="section shell music-gallery-section" aria-labelledby="music-gallery-title">
+    <section id="fotos" className="section shell music-gallery-section" aria-labelledby="music-gallery-title">
       <div className="music-gallery-heading">
         <div>
           <p className="eyebrow">Galería fotográfica</p>
-          <h2 id="music-gallery-title">La expresión también <em>se ve.</em></h2>
-          <p>Imágenes de presentaciones reales, registradas durante actuaciones en Mar de Ajó.</p>
+          <h2 id="music-gallery-title">Escenarios <em>en imágenes.</em></h2>
+          <p>Retratos de actuaciones en Mar de Ajó, seleccionados para esta galería.</p>
         </div>
         <div className="music-gallery-controls" aria-label="Controles del carrusel">
           <button type="button" aria-label="Fotografía anterior" onClick={() => go(-1)}>←</button>

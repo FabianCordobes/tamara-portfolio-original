@@ -17,16 +17,16 @@ export default function MusicaPage() {
     <>
       <PageIntro eyebrow="Música / Interpretaciones vocales"
         title={<>Mi voz, <em>en escena.</em></>}
-        description="Mi recorrido musical comprende rock, repertorio melódico y expresiones del folklore. Explorá mis presentaciones, fotografías y registros en directo.">
-        <Link href="#videos" className="button button-primary">Ver videos ↓</Link>
-        <Link href="/contacto?motivo=musica#formulario" className="text-link">Convocatorias y colaboraciones ↗</Link>
+        description="Interpretaciones en vivo que recorren el rock, la canción melódica y el folklore. Escuchá registros auténticos de distintas presentaciones.">
+        <Link href="#videos" className="button button-primary">Escuchar actuaciones ↓</Link>
+        <Link href="#fotos" className="text-link">Ver fotografías ↓</Link>
       </PageIntro>
       <div id="videos" className="music-anchor"><MusicPlayer /></div>
       <MusicGallery />
       <section className="section shell music-synergy" aria-labelledby="music-synergy-heading">
         <div className="music-synergy-intro">
           <p className="eyebrow">Canto y producción</p>
-          <h2 id="music-synergy-heading">Del escenario a <em>la producción cultural.</em></h2>
+          <h2 id="music-synergy-heading">También detrás <em>del escenario.</em></h2>
         </div>
         <div>
           <p>La experiencia en comunicación amplía mi participación artística. Puedo contribuir desde la planificación de contenidos, la promoción de espectáculos o la coordinación operativa.</p>

@@ -12,8 +12,8 @@ export function MusicPlayer() {
     <section className="section shell music-player-section" aria-labelledby="music-samples-heading">
       <div className="section-heading">
         <p className="eyebrow">Selección audiovisual</p>
-        <h2 id="music-samples-heading">Mi repertorio <em>en escena.</em></h2>
-        <p>Elegí una presentación para reproducirla desde esta página.</p>
+        <h2 id="music-samples-heading">Actuaciones <em>seleccionadas.</em></h2>
+        <p>Seleccioná una interpretación. El video se reproduce en esta misma página.</p>
       </div>
       <div className="music-player-layout">
         <div className="music-player-screen">

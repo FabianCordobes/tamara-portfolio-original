@@ -73,7 +73,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
       <div className="contact-form-heading">
         <p className="eyebrow">Formulario de contacto</p>
         <h2 id="contact-form-title">Contame tu propuesta.</h2>
-        <p>Completá los campos. Las respuestas se enviarán al email que indiques.</p>
+        <p>Usaré el correo que indiques para responder tu consulta.</p>
       </div>
       <fieldset disabled={!canSubmit || state === "pending"}>
         <div className="form-grid">
