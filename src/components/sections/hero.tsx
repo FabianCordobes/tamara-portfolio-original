@@ -12,13 +12,8 @@ export function Hero() {
           <ButtonLink href="#elegir-recorrido">Encontrá lo que buscás ↓</ButtonLink>
           <ButtonLink href="/musica" variant="secondary">Escuchame cantar ↗</ButtonLink>
         </div>
-        <p className="hero-signature">Una identidad profesional y artística. Tres formas de colaborar.</p>
       </div>
       <MediaPlaceholder media={{ src: "/images/tamara-atadia.png", alt: "Retrato de Tamara Atadía", width: 1254, height: 1254 }} />
-      <div className="hero-bottom" aria-hidden="true">
-        <span>MARKETING / PROYECTOS / MÚSICA</span>
-        <span>01 — CONOCÉ MI TRABAJO</span>
-      </div>
     </section>
   );
 }

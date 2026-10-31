@@ -4,8 +4,8 @@ export const profile = {
   headline: "Estrategia que se convierte en acción.",
   intro: "Dirijo proyectos de comunicación y negocio desde su planificación hasta la ejecución. Mi trabajo integra estrategia, liderazgo de equipos, desarrollo comercial y coordinación operativa.",
   paragraphs: [
-    "Mi trayectoria conecta medios de comunicación, iniciativas empresariales, emprendimientos propios y trabajo territorial. En cada experiencia busco comprender el contexto y generar una dirección clara.",
-    "Combino planificación, contenidos, relaciones institucionales y gestión comercial con coordinación de personas y recursos para convertir objetivos en acciones."
+    "En Full Medios coordiné equipos y participé en la organización comercial; en Milpos, desarrollé acciones de comunicación territorial y vínculos con escuelas técnicas.",
+    "Fundé Tamms, un emprendimiento gastronómico y cultural, e impulsé Brush Fest junto a otros artistas. Estas experiencias me dieron una perspectiva práctica de la producción, la comunicación y el trabajo en equipo."
   ],
   disciplines: ["Estrategia", "Liderazgo", "Comunicación", "Ejecución"]
 };

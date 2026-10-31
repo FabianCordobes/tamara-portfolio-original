@@ -5,9 +5,9 @@ export function SelectedExperience() {
   return (
     <section id="experiencia" className="section shell">
       <SectionHeading
-        number="04"
-        label="Experiencia seleccionada"
-        title="Distintas industrias. La misma capacidad de conectar."
+        number="02"
+        label="Otros ámbitos de experiencia"
+        title="Otros sectores en los que trabajé."
       />
       <div className="grid gap-4 md:grid-cols-2">
         {experience.map((e) => (
