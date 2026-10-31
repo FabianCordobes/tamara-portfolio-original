@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+
+const manifest = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+assert.equal(manifest.dependencies["embla-carousel-react"], "8.6.0", "Embla React library pinned");
+assert.equal(manifest.dependencies["embla-carousel-autoplay"], "8.6.0", "Official Embla autoplay plugin pinned");
 
 const port = 4321;
 const host = `http://127.0.0.1:${port}`;
