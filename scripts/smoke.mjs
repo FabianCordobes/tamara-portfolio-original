@@ -12,10 +12,10 @@ const checks = [
   ["/servicios", ["Estrategia de marketing", "Desarrollo comercial", "Producción y coordinación"]],
   ["/proyectos", ["Full Medios", "Milpos", "Strong Fitness Gym", "Tamms", "Brush Fest"]],
   ["/perfil-profesional", ["LinkedIn", "Sobre mí", "Formación"]],
-  ["/musica", ["Melódico romántico", "Folklore", "Expresión chacarera"]],
-  ["/contacto?motivo=musica", ["Convocar a cantar", "Seleccionado"]],
-  ["/contacto?motivo=empleo", ["Proponer un trabajo", "Seleccionado"]],
-  ["/contacto?motivo=servicio", ["Contratar servicios", "Seleccionado"]]
+  ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Galería fotográfica"]],
+  ["/contacto?motivo=musica", ["Formulario de contacto", "Propuesta artística o casting", "contact-form-title"]],
+  ["/contacto?motivo=empleo", ["Formulario de contacto", "Oportunidad profesional"]],
+  ["/contacto?motivo=servicio", ["Formulario de contacto", "Proyecto o consultoría"]]
 ];
 
 async function ready() {
@@ -40,7 +40,12 @@ try {
     if (route === "/musica") {
       assert.ok(html.includes("sandbox="), "Preview sandbox");
       assert.ok(!html.includes("Abrir este video"), "No external video action");
-      assert.equal((html.match(/class="music-track /g) ?? []).length, 3, "Three public videos");
+      assert.equal((html.match(/class="music-track /g) ?? []).length, 4, "Four public videos");
+      assert.equal((html.match(/class="music-gallery-slide"/g) ?? []).length, 2, "Two real stage photographs");
+    }
+    if (route.startsWith("/contacto")) {
+      assert.ok(html.includes('<form'), "Contact form available on every route");
+      assert.ok(html.includes('id="formulario"'), "Direct contact anchor");
     }
     console.log("PASS", route);
   }
