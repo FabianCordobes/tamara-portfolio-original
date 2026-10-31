@@ -10,6 +10,14 @@ export type MusicVideo = {
 
 export const musicVideos: MusicVideo[] = [
   {
+    id: "1GJhSWJNKj3qy3BhsA51eKZN7jUMdb86w",
+    title: "Ruta 66 · En vivo",
+    description: "Interpretación de rock en formato acústico, acompañada por músicos frente al público.",
+    context: "Rock · Presentación en directo",
+    orientation: "portrait",
+    duration: "2:24"
+  },
+  {
     id: "1Iqs0YqcFnoHpvJEr3Ru3oKcwSVdMPHCg",
     title: "Melódico romántico",
     description: "Interpretación vocal sobre escenario, con primeros planos y momentos expresivos.",

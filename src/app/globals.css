@@ -852,3 +852,31 @@ button, input, select, textarea { font-family: inherit; }
   .journey-card:hover { transform:none; }
   .journey-card { transition:none; }
 }
+
+
+/* Stage photography — deliberate layout and accessible carousel controls */
+.music-gallery-section { padding-block:clamp(3rem,6vw,5.5rem); }
+.music-gallery-heading { display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap; gap:1.5rem; margin-bottom:1.5rem; }
+.music-gallery-heading h2 { max-width:20ch; }
+.music-gallery-heading p:not(.eyebrow) { max-width:49ch; }
+.music-gallery-controls { display:flex; align-items:center; gap:1rem; }
+.music-gallery-controls button { width:48px; height:48px; border:1px solid #796847; border-radius:50%; background:transparent; color:var(--color-text); cursor:pointer; font-size:1.35rem; }
+.music-gallery-controls button:hover, .music-gallery-controls button:focus-visible { background:var(--color-accent); color:#141414; }
+.music-gallery-controls span { color:var(--color-text); font-size:.875rem; min-width:3rem; text-align:center; font-variant-numeric:tabular-nums; }
+.music-gallery-stage { background:#1e1b19; border:1px solid var(--color-line); border-radius:1rem; padding:clamp(1rem,2.5vw,2rem); display:grid; justify-items:center; outline-offset:6px; }
+.music-gallery-slide { width:100%; display:grid; justify-items:center; margin:0; }
+.music-gallery-slide[hidden] { display:none!important; }
+.music-gallery-image { width:auto; height:auto; max-width:min(100%,650px); max-height:min(75vh,650px); object-fit:contain; border-radius:.6rem; }
+.music-gallery-slide figcaption { color:var(--color-text); margin-top:1rem; font-size:.93rem; text-align:center; }
+.music-gallery-pagination { display:flex; gap:.4rem; justify-content:center; align-items:center; margin-top:1rem; }
+.music-gallery-dot { width:44px; height:44px; background:transparent; border:0; cursor:pointer; display:grid; place-items:center; }
+.music-gallery-dot::after { content:""; width:10px; height:10px; border-radius:50%; background:#73706a; transition:background .2s,transform .2s; }
+.music-gallery-dot.active::after { background:var(--color-accent); transform:scale(1.25); }
+@media (max-width:640px) {
+  .music-gallery-heading { align-items:start; }
+  .music-gallery-controls { width:100%; justify-content:space-between; }
+  .music-gallery-image { max-height:62vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .music-gallery-dot::after { transition:none; }
+}
