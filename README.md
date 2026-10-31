@@ -36,19 +36,23 @@ Grafito #121212, marfil #F5F2EB, dorado #C2A05D. Tipografía Geist para UI y Geo
 - Metodología, enlaces de WhatsApp con mensajes precargados y formulario con estados de validación, envío, éxito y error.
 - Animaciones por IntersectionObserver y CSS, microinteracciones y `prefers-reduced-motion`. El contenido sigue disponible sin JavaScript.
 
-### Activar el contacto
+### Contacto con Formspree (sin dominio propio)
 
-Copiar `.env.example` a `.env.local` y completar:
+El formulario mantiene su ruta `/contacto` y realiza la validación en cliente y en el endpoint propio `POST /api/contact`. El servidor envía solamente datos validados a Formspree. No se requiere una biblioteca adicional, credencial Resend ni dominio propio.
 
-- `NEXT_PUBLIC_CONTACT_EMAIL`: email público real de Tamara.
-- `NEXT_PUBLIC_LINKEDIN_URL`: URL verificada de su perfil de LinkedIn.
-- `RESEND_API_KEY`: clave privada de Resend (nunca usar un prefijo NEXT_PUBLIC).
-- `CONTACT_EMAIL_FROM`: dirección remitente de un dominio verificado en Resend.
-- `CONTACT_EMAIL_TO`: dirección donde recibir las consultas.
+1. Crear una cuenta en https://formspree.io con un correo verificado.
+2. Crear un formulario llamado «Contacto · Portfolio Tamara», elegir `tammatadia@gmail.com` como **Target Email** o email de notificaciones y verificar la dirección en Formspree.
+3. En la sección **Integration**, copiar el identificador que aparece en `https://formspree.io/f/XXXXXXXX` (solo el ID).
+4. Configurar la variable `FORMSPREE_FORM_ID` en Vercel, para `Production` y `Preview`. No usar la dirección de Gmail ni una URL arbitraria como valor.
+5. Volver a desplegar la aplicación. Verificar la entrega solo con autorización del destinatario.
 
-Sin configuración de correo, el formulario se muestra deshabilitado y dirige a WhatsApp. No simula un envío exitoso. Los enlaces de email y LinkedIn aparecen únicamente cuando están configurados; no se inventaron datos personales. Reiniciar desarrollo después de cambiar variables y reconstruir producción. No incluir `.env.local` en git ni en archivos compartidos.
+`NEXT_PUBLIC_CONTACT_EMAIL` sigue siendo opcional y permite abrir el correo del visitante con `mailto:` si Formspree aún no está configurado. Esta alternativa **no envía mensajes automáticamente**. Cuando falta `FORMSPREE_FORM_ID`, no se realiza ningún POST al proveedor. El destinatario de los mensajes no está controlado por Vercel: se configura exclusivamente en el panel de Formspree.
 
-El endpoint valida en servidor tipo/tamaño de campos, consentimiento, origen, honeypot y tiempo mínimo. Limita a cinco intentos cada diez minutos por instancia y dirección confiable de Vercel. Fuera de Vercel usa un bucket común: adaptar el identificador al proxy confiable. En un deployment distribuido, complementar con un rate limiter compartido o WAF: la memoria no persiste entre instancias. No se registran los mensajes en logs. Revisar el aviso de privacidad y las políticas del proveedor antes del lanzamiento público.
+El endpoint valida origen, tamaño, contenido, consentimiento y honeypot. El rate limit en memoria de cinco intentos cada diez minutos **no es distribuido**; si escala la aplicación, utilizar WAF o almacenamiento compartido. Los errores del proveedor se devuelven con códigos adecuados (incluido 429), sin exponer datos sensibles. No se envían correos reales durante las pruebas automatizadas.
+
+El plan gratuito de Formspree permite hasta 50 envíos al mes y mantiene un historial limitado. Se puede configurar el email de notificación sin dominio propio; el panel del proveedor requiere verificar el email vinculado. El estado `ok` indica que Formspree aceptó el envío, no que Gmail lo entregó.
+
+Las variables antiguas `RESEND_API_KEY`, `CONTACT_EMAIL_FROM` y `CONTACT_EMAIL_TO` ya no son utilizadas por el código. Se pueden retirar de Vercel luego de revisar que ningún otro flujo dependa de ellas.
 
 ### Material pendiente
 

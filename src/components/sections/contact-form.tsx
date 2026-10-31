@@ -32,6 +32,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
     const validation = validateContact(data);
     setErrors(validation);
     if (Object.keys(validation).length) {
+      setNotice("Revisá los campos señalados para continuar.");
       form.querySelector<HTMLElement>(`[name="${Object.keys(validation)[0]}"]`)?.focus();
       return;
     }
@@ -57,7 +58,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
       const result = await response.json();
       if (!response.ok) throw new Error(result.message || "No se pudo entregar el mensaje.");
       setState("success");
-      setNotice("¡Listo! Tu consulta fue enviada correctamente.");
+      setNotice("Tu consulta se registró correctamente. Gracias por escribir.");
       setErrors({});
       form.reset();
       startedAt.current = 0;
