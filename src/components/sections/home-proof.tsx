@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cases } from "@/content/cases";
 import { TrackedLink } from "@/components/ui/tracked-link";
+import { ProjectPhoto } from "@/components/ui/project-photo";
 
 const featuredIDs = ["full-medios", "brush-fest"] as const;
 const featuredCases = featuredIDs.map(id => {
@@ -26,6 +27,14 @@ export function HomeProof() {
               <p className="eyebrow">{project.category}</p>
               <h3>{project.name}</h3>
               <p>{project.role}</p>
+              {project.id === "full-medios" && (
+                <ProjectPhoto
+                  className="home-proof-photo"
+                  src="/images/projects/full-medios-estudio.jpg"
+                  alt="Estudio de radio y streaming de Full Medios"
+                  caption="Estudio de Full Medios · Archivo del proyecto, 2025"
+                />
+              )}
             </div>
             <div className="home-proof-outcome">
               <strong>{project.results[0].value}</strong>

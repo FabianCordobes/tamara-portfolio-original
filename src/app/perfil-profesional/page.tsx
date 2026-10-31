@@ -6,6 +6,7 @@ import { SelectedExperience } from "@/components/sections/selected-experience";
 import { Education } from "@/components/sections/education";
 import { CtaBand } from "@/components/sections/cta-band";
 import { socialLinks } from "@/content/social";
+import { ProjectPhoto } from "@/components/ui/project-photo";
 
 export const metadata: Metadata = {
   title: "Trayectoria en marketing, medios y gestión de equipos",
@@ -24,6 +25,19 @@ export default function PerfilProfesionalPage() {
       </PageIntro>
       <Profile />
       <SelectedExperience />
+      <section className="section shell editorial-photo-feature professional-photo-feature" aria-labelledby="professional-photo-heading">
+        <ProjectPhoto
+          src="/images/projects/tamms-formacion.jpg"
+          alt="Actividad de formación musical y participación colectiva en el proyecto Tamms"
+          caption="Formación musical en Tamms · Registro del proyecto, 2023"
+        />
+        <div className="editorial-photo-copy">
+          <p className="eyebrow">Gestión de experiencias / Tamms</p>
+          <h2 id="professional-photo-heading">Organizar también es crear <em>espacios para otros.</em></h2>
+          <p>La coordinación de actividades, personas y recursos formó parte de mi experiencia al desarrollar Tamms, un emprendimiento que integró gastronomía, propuestas culturales y formación.</p>
+          <Link className="text-link" href="/proyectos#caso-tamms">Conocé el proyecto Tamms ↗</Link>
+        </div>
+      </section>
       <Education />
       <section className="section shell professional-music-bridge">
         <div><p className="eyebrow">Otro lado de mi recorrido</p><h2>También soy <em>cantante.</em></h2></div>

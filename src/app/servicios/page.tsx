@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Methodology } from "@/components/sections/methodology";
 import { CtaBand } from "@/components/sections/cta-band";
+import { ProjectPhoto } from "@/components/ui/project-photo";
 
 export const metadata: Metadata = {
   title: "Servicios de marketing y comunicación para marcas",
@@ -52,6 +53,20 @@ export default function ServiciosPage() {
               <p className="service-deliverables"><strong>En qué trabajamos:</strong> {service.output}</p>
             </article>
           ))}
+        </div>
+        <div className="editorial-photo-feature service-photo-feature">
+          <ProjectPhoto
+            src="/images/projects/brush-fest-programacion.jpg"
+            alt="Pieza gráfica de difusión con la programación de Brush Fest"
+            caption="Material de comunicación de Brush Fest · Programación de diciembre de 2023"
+            variant="document"
+          />
+          <div className="editorial-photo-copy">
+            <p className="eyebrow">Un ejemplo real / Brush Fest</p>
+            <h3>Comunicación que acompaña la producción.</h3>
+            <p>La planificación también se expresa en materiales concretos. Esta pieza de difusión pertenece al proyecto Brush Fest, donde participé en la coordinación y organización del evento.</p>
+            <Link className="text-link" href="/proyectos#caso-brush-fest">Conocé el trabajo de Brush Fest ↗</Link>
+          </div>
         </div>
       </section>
       <Methodology />
