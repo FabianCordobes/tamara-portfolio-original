@@ -12,7 +12,7 @@ const checks = [
   ["/servicios", ["Estrategia de marketing", "Desarrollo comercial", "Producción y coordinación"]],
   ["/proyectos", ["Full Medios", "Milpos", "Strong Fitness Gym", "Tamms", "Brush Fest"]],
   ["/perfil-profesional", ["LinkedIn", "Sobre mí", "Formación"]],
-  ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Portfolio fotográfico"]],
+  ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Momentos del recorrido artístico"]],
   ["/contacto?motivo=musica", ["Formulario de contacto", "Propuesta artística o casting", "contact-form-title"]],
   ["/contacto?motivo=empleo", ["Formulario de contacto", "Oportunidad profesional"]],
   ["/contacto?motivo=servicio", ["Formulario de contacto", "Proyecto o consultoría"]]
@@ -41,8 +41,12 @@ try {
       assert.ok(html.includes("sandbox="), "Preview sandbox");
       assert.ok(!html.includes("Abrir este video"), "No external video action");
       assert.equal((html.match(/class="music-track /g) ?? []).length, 4, "Four public videos");
-      assert.equal((html.match(/class="music-gallery-slide"/g) ?? []).length, 10, "Ten curated artistic photographs");
-      assert.ok(html.includes("music-gallery-thumbnail-rail"), "Carousel thumbnail navigation");
+      assert.equal((html.match(/class="music-editorial-card /g) ?? []).length, 3, "Three distinct artistic photographs");
+      assert.ok(!html.includes("music-gallery-thumbnail-rail"), "No redundant photo carousel");
+    }
+    assert.ok(!/cinco proyectos|ver los cinco proyectos|proyectos seleccionados/i.test(html), "No finite project counts or repeated selection");
+    if (route === "/" || route === "/servicios" || route === "/perfil-profesional") {
+      assert.ok(!html.includes("project-preview-grid"), "No duplicated project cards outside case studies");
     }
     if (route.startsWith("/contacto")) {
       assert.ok(html.includes('<form'), "Contact form available on every route");
