@@ -6,8 +6,8 @@ export function Hero() {
     <section id="inicio" className="shell hero hero-redesign">
       <div className="hero-copy">
         <p className="eyebrow">Tamara Atadía / Comunicación · Gestión · Canto</p>
-        <h1>Comunicar, crear y llevar ideas <em>a escena.</em></h1>
-        <p className="hero-intro">Trabajo en marketing y desarrollo de proyectos, y también soy cantante. Mi recorrido une equipos, marcas y experiencias artísticas.</p>
+        <h1>Comunicación con propósito. <em>Expresión con identidad.</em></h1>
+        <p className="hero-intro">Mi trayectoria abarca marketing, desarrollo comercial y producción cultural. Como cantante, traslado esa sensibilidad creativa al escenario.</p>
         <div className="hero-actions">
           <ButtonLink href="#elegir-recorrido">Encontrá lo que buscás ↓</ButtonLink>
           <ButtonLink href="/musica" variant="secondary">Escuchame cantar ↗</ButtonLink>
