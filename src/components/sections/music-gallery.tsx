@@ -182,7 +182,7 @@ export function MusicGallery() {
     >
       <div className="music-gallery-heading">
         <div>
-          <p className="eyebrow">Portfolio fotográfico</p>
+          <p className="eyebrow">Momentos del recorrido artístico</p>
           <h2 id="music-gallery-title">Escenario, identidad <em>y expresión.</em></h2>
           <p>Diez momentos de actuaciones, sesiones artísticas y participaciones en medios.</p>
         </div>
