@@ -20,6 +20,7 @@ export function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Tamara Atadía</span>
+          <Link href="/privacidad">Privacidad</Link>
           <Link href="/">Inicio ↑</Link>
         </div>
       </div>

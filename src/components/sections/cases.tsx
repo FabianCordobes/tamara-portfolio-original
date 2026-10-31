@@ -17,7 +17,7 @@ export function Cases() {
                 <p>{project.challenge}</p>
                 <p><strong className="text-accent">Mi responsabilidad:</strong> {project.role}</p>
               </div>
-              {project.results.length > 0 && <dl className="case-results">{project.results.map(result => <div key={`${result.value}-${result.label}`}><dt>{result.value}</dt><dd>{result.label}</dd></div>)}</dl>}
+              {project.verifiedResults && project.results.length > 0 && <dl className="case-results">{project.results.map(result => <div key={`${result.value}-${result.label}`}><dt>{result.value}</dt><dd>{result.label}</dd></div>)}</dl>}
               {project.highlights && (
                 <div className="case-highlight-grid" aria-label={`Registros de ${project.name}`}>
                   {project.highlights.map(photo => (
@@ -26,6 +26,32 @@ export function Cases() {
                 </div>
               )}
               <details className="case-details">
+                <summary><span>Contexto, decisiones y ejecución <span className="sr-only">en {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
+                <div className="case-expanded case-process">
+                  <div>
+                    <p className="eyebrow">Desafío y contexto</p>
+                    <p>{project.challenge}</p>
+                  </div>
+                  <div>
+                    <p className="eyebrow">Responsabilidad y alcance</p>
+                    <p>{project.role}</p>
+                  </div>
+                  <div>
+                    <p className="eyebrow">Planificación y ejecución</p>
+                    <ul className="case-process-list">
+                      {project.steps.map(step => <li key={step}>{step}</li>)}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="eyebrow">Aprendizaje del proyecto</p>
+                    <p>{project.conclusion}</p>
+                  </div>
+                  {project.results.length > 0 && !project.verifiedResults && (
+                    <p className="case-evidence-note">Las cifras de alcance y sus períodos están pendientes de validación documental y atribución; no se presentan como resultados comprobados.</p>
+                  )}
+                </div>
+              </details>
+              <details className="case-details case-material-details">
                 <summary><span>Ver proceso y material <span className="sr-only">de {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
                 <div className="case-expanded"><a className="case-social" href={project.instagram} target="_blank" rel="noopener noreferrer">Ver {project.name} en Instagram ↗</a></div>
                 {project.featuredProject && <div className="case-expanded">
