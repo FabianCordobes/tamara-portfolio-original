@@ -28,6 +28,7 @@ export default function PerfilProfesionalPage() {
       <section className="section shell editorial-photo-feature professional-photo-feature" aria-labelledby="professional-photo-heading">
         <ProjectPhoto
           src="/images/projects/tamms-formacion.jpg"
+          variant="portrait"
           alt="Actividad de formación musical y participación colectiva en el proyecto Tamms"
           caption="Formación musical en Tamms · Registro del proyecto, 2023"
         />

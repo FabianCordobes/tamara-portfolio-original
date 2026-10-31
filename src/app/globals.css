@@ -1171,3 +1171,12 @@ button, input, select, textarea { font-family: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .project-photo { scroll-behavior: auto; }
 }
+
+/* The Tamms formation image is portrait (530 × 640); preserve the full composition. */
+.project-photo--portrait .project-photo-frame {
+  aspect-ratio: 530 / 640;
+  max-width: 440px;
+}
+.project-photo--portrait .project-photo-frame img {
+  object-fit: contain;
+}

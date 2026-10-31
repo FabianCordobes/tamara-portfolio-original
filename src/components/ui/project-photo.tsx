@@ -4,7 +4,7 @@ type ProjectPhotoProps = {
   src: string;
   alt: string;
   caption: string;
-  variant?: "photo" | "document";
+  variant?: "photo" | "document" | "portrait";
   className?: string;
 };
 
