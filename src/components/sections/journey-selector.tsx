@@ -3,15 +3,15 @@ import Link from "next/link";
 const journeys = [
   { number: "01", kind: "Empresas y emprendimientos",
     title: "Necesito impulsar una marca",
-    description: "Comunicación, desarrollo comercial y planificación para hacer avanzar tu negocio.",
+    description: "Estrategia de marca, comunicación comercial y ejecución orientada a objetivos.",
     href: "/servicios", action: "Conocer servicios" },
   { number: "02", kind: "Selección de talento",
     title: "Busco una profesional",
-    description: "Mi experiencia en coordinación, marketing, ventas y gestión de equipos.",
+    description: "Trayectoria en marketing, coordinación operativa y conducción de equipos.",
     href: "/perfil-profesional", action: "Ver trayectoria" },
   { number: "03", kind: "Bandas, castings y escenarios",
     title: "Busco una cantante",
-    description: "Interpretaciones en vivo y proyectos que combinan arte con comunicación.",
+    description: "Muestras vocales, experiencia escénica y producción cultural.",
     href: "/musica", action: "Ver actuaciones" }
 ];
 
