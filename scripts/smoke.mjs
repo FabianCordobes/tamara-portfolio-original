@@ -4,7 +4,7 @@ import { spawn } from "node:child_process";
 const port = 4321;
 const host = `http://127.0.0.1:${port}`;
 const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "-p", String(port)], {
-  env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" }, stdio: "ignore"
+  env: { ...process.env, FORMSPREE_FORM_ID: "", NEXT_TELEMETRY_DISABLED: "1" }, stdio: "ignore"
 });
 
 const checks = [
@@ -54,4 +54,57 @@ try {
     }
     console.log("PASS", route);
   }
+
+  const endpoint = host + "/api/contact";
+  const foreignOrigin = await fetch(endpoint, {
+    method: "POST",
+    headers: { Origin: "https://otro-sitio.example", "Content-Type": "application/json" },
+    body: "{}"
+  });
+  assert.equal(foreignOrigin.status, 403, "Contact rejects cross-origin requests");
+
+  const badContentType = await fetch(endpoint, {
+    method: "POST",
+    headers: { Origin: host, "Content-Type": "text/plain" },
+    body: "{}"
+  });
+  assert.equal(badContentType.status, 415, "Contact rejects unsupported content types");
+
+  const invalidJson = await fetch(endpoint, {
+    method: "POST",
+    headers: { Origin: host, "Content-Type": "application/json" },
+    body: "{"
+  });
+  assert.equal(invalidJson.status, 400, "Contact rejects invalid JSON");
+
+  const invalidConsent = await fetch(endpoint, {
+    method: "POST",
+    headers: { Origin: host, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: "Nombre de prueba",
+      email: "ejemplo@example.com",
+      intent: "Proyecto o consultoría",
+      message: "Esta consulta sirve para verificar las validaciones del endpoint.",
+      consent: false,
+      startedAt: Date.now(),
+      website: ""
+    })
+  });
+  assert.equal(invalidConsent.status, 400, "Contact requires explicit consent");
+  const configuredLater = await fetch(endpoint, {
+    method: "POST",
+    headers: { Origin: host, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: "Nombre de prueba",
+      email: "ejemplo@example.com",
+      intent: "Proyecto o consultoría",
+      message: "Esta consulta verifica que no se envíen datos sin configurar Formspree.",
+      consent: true,
+      startedAt: Date.now(),
+      website: ""
+    })
+  });
+  assert.equal(configuredLater.status, 503, "Contact does not attempt delivery without a Formspree form ID");
+  assert.equal(configuredLater.headers.get("cache-control"), "no-store", "Contact responses are not cached");
+  console.log("PASS /api/contact validation and unconfigured provider");
 } finally { server.kill("SIGTERM"); }

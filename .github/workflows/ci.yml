@@ -1,20 +1,39 @@
 name: Validate portfolio
+
 on:
   pull_request:
+    branches: [master]
   push:
-    branches: [main]
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm run build
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Audit production dependencies (high and critical)
+        run: npm audit --omit=dev --audit-level=high
+      - name: ESLint
+        run: npm run lint
+      - name: TypeScript
+        run: npm run typecheck
+      - name: Production build
+        run: npm run build
       - name: Verify page journeys and navigation
         run: node scripts/smoke.mjs

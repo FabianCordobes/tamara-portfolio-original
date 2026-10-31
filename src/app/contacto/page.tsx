@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageIntro } from "@/components/layout/page-intro";
 import { ContactForm } from "@/components/sections/contact-form";
 import { socialLinks, instagramHandle } from "@/content/social";
+import { getFormspreeEndpoint } from "@/lib/formspree";
 
 export const metadata: Metadata = {
   title: "Contacto | Consultas profesionales y artísticas",
@@ -22,7 +23,7 @@ export default async function ContactoPage({ searchParams }: ContactPageProps) {
         ? "Proyecto o consultoría"
         : "";
   const publicEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || undefined;
-  const canSendDirectly = Boolean(process.env.RESEND_API_KEY && process.env.CONTACT_EMAIL_FROM && (process.env.CONTACT_EMAIL_TO || publicEmail));
+  const canSendDirectly = Boolean(getFormspreeEndpoint(process.env.FORMSPREE_FORM_ID));
   const delivery = canSendDirectly ? "direct" as const : publicEmail ? "email" as const : "unavailable" as const;
 
   const guidance = reason === "musica"
