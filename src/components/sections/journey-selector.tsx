@@ -31,8 +31,8 @@ export function JourneySelector() {
   return (
     <section id="elegir-recorrido" className="section shell journeys-section" aria-labelledby="journeys-heading">
       <div className="section-heading">
-        <p className="eyebrow">Empecemos por tu necesidad</p>
-        <h2 id="journeys-heading">¿Qué necesitás <em>hacer realidad?</em></h2>
+        <p className="eyebrow">Soluciones según tu objetivo</p>
+        <h2 id="journeys-heading">¿En qué puedo <em>colaborar?</em></h2>
       </div>
       <div className="journey-grid journey-grid-three">
         {needs.map(item => (
