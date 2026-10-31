@@ -37,7 +37,7 @@ export default async function ContactoPage({ searchParams }: ContactPageProps) {
             <a className="button button-primary" href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">Contactar por LinkedIn ↗</a>
             <p className="contact-context">Si escribís por una oportunidad laboral, incluí el puesto, la modalidad y una breve descripción del rol.</p>
           </div>
-          {emailEnabled && <ContactForm enabled defaultIntent={defaultIntent} />}
+          {emailEnabled && <ContactForm key={defaultIntent} enabled defaultIntent={defaultIntent} />}
         </div>
       </section>
     </>

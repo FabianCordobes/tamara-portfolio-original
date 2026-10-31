@@ -12,7 +12,7 @@ export const cases: PortfolioCase[] = [
   {
     period: "Junio de 2025 – enero de 2026", instagram: "https://www.instagram.com/full_medios/", logo: "/images/logos/full-medios.jpg", id: "full-medios", name: "Full Medios", category: "Medios / Streaming / Contenidos",
     headline: "Producción con una dirección común.",
-    broadcast: { embed: "https://www.youtube.com/embed/bPZc0YGSNVs?start=23100&end=23160&autoplay=1&mute=1&playsinline=1&rel=0", url: "https://www.youtube.com/watch?v=bPZc0YGSNVs", caption: "Full Fest · Pasarela de Claushin Models sobre la alfombra roja. Fragmento de un minuto de la transmisión en vivo. Activá el audio desde los controles." },
+    broadcast: { embed: "https://www.youtube.com/embed/bPZc0YGSNVs?start=23100&end=23160&autoplay=0&mute=1&playsinline=1&rel=0", url: "https://www.youtube.com/watch?v=bPZc0YGSNVs", caption: "Full Fest · Pasarela de Claushin Models sobre la alfombra roja. Fragmento de un minuto de la transmisión en vivo. Activá el audio desde los controles." },
     gallery: [{ src: "/images/projects/fullfest-pasarela.webp", alt: "Desfile de Claushin Models en la pasarela de Full Fest", caption: "Pasarela de Claushin Models · Fotografía: Teka Audiovisuales. Publicación colaborativa de noviembre de 2025.", url: "https://www.instagram.com/claushinmodels/p/DRpWYhokeac/" }],
     sample: { src: "/images/projects/full-medios-estudio.jpg", alt: "Estudio de Full Medios con micrófonos y consola de audio", caption: "Estudio de radio y streaming de Full Medios · Octubre de 2025.", url: "https://www.instagram.com/full_medios/reel/DPjdpVPkcNr/" },
     challenge: "Medio de radio y streaming con programación audiovisual y presencia en redes.",
