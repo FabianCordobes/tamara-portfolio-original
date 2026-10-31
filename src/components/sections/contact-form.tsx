@@ -13,7 +13,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [state, setState] = useState<"idle" | "pending" | "success" | "error">("idle");
   const [notice, setNotice] = useState("");
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef<number>(0);
   const status = useRef<HTMLParagraphElement>(null);
   const canSubmit = delivery !== "unavailable";
 
@@ -60,7 +60,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
       setNotice("¡Listo! Tu consulta fue enviada correctamente.");
       setErrors({});
       form.reset();
-      startedAt.current = Date.now();
+      startedAt.current = 0;
     } catch (error) {
       setState("error");
       setNotice(error instanceof Error ? error.message : "No pudimos enviar el mensaje. Probá nuevamente.");
@@ -69,7 +69,7 @@ export function ContactForm({ delivery, email, defaultIntent = "" }: {
   }
 
   return (
-    <form className="contact-form contact-form-primary" onSubmit={submit} noValidate aria-labelledby="contact-form-title">
+    <form className="contact-form contact-form-primary" onSubmit={submit} noValidate aria-labelledby="contact-form-title" onFocus={() => { if (!startedAt.current) startedAt.current = Date.now(); }}>
       <div className="contact-form-heading">
         <p className="eyebrow">Formulario de contacto</p>
         <h2 id="contact-form-title">Contame tu propuesta.</h2>
