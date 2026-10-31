@@ -44,7 +44,9 @@ try {
       assert.equal((html.match(/class="music-track /g) ?? []).length, 4, "Four public videos");
       assert.equal((html.match(/class="music-gallery-slide"/g) ?? []).length, 10, "Ten original gallery photographs");
       assert.equal((html.match(/class="music-gallery-thumb /g) ?? []).length, 10, "Ten selectable thumbnails");
-      assert.ok(html.includes("Pausar avance automático"), "Autoplay can be paused");
+      assert.ok(html.includes("Reanudar avance automático"), "Carousel has accessible autoplay toggle");
+      assert.ok(html.includes("music-gallery-viewport"), "Embla viewport is rendered");
+      assert.ok(!html.includes("Las fotografías avanzan automáticamente"), "No instructional text under gallery");
       assert.ok(html.includes("music-gallery-thumbnail-rail"), "Photo selector restored");
       assert.ok(!html.includes("music-editorial-grid"), "Three-photo grid replaced");
       for (const file of ["canto-escenario-colores.jpg","retrato-estudio-guitarra.jpg","tamara-escenario-mar-de-ajo.jpg","retrato-vinilos.jpg","actuacion-escenario.jpg","tamara-show-mar-de-ajo.jpg","duo-musical.jpg","actuacion-television.jpg","expresion-artistica.jpg","entrevista-television.jpg"]) {

@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState, type FocusEvent, type KeyboardEvent, type TouchEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const photos = [
   {
@@ -76,189 +78,194 @@ const photos = [
   }
 ] as const;
 
-const intervalMs = 5000;
-
 export function MusicGallery() {
-  const [current, setCurrent] = useState(0);
-  const [playing, setPlaying] = useState(true);
+  const [selected, setSelected] = useState(0);
+  const [motion, setMotion] = useState<"pending" | "regular" | "reduced">("pending");
+  const [playChoice, setPlayChoice] = useState<"default" | "play" | "pause">("default");
   const [inView, setInView] = useState(false);
-  const [pageVisible, setPageVisible] = useState(true);
-  const [hovered, setHovered] = useState(false);
-  const [focused, setFocused] = useState(false);
+  const [tabVisible, setTabVisible] = useState(true);
   const galleryRef = useRef<HTMLElement>(null);
-  const touchStart = useRef<number | null>(null);
+  const autoplay = useRef(
+    Autoplay({
+      delay: 5000,
+      playOnInit: false,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+      stopOnFocusIn: true
+    })
+  );
+  const [viewportRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "center", duration: 32 },
+    [autoplay.current]
+  );
 
-  const go = (step: number) =>
-    setCurrent(index => (index + step + photos.length) % photos.length);
+  const shouldPlay = playChoice === "play" || (playChoice === "default" && motion === "regular");
 
   useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    // A user's reduced-motion preference disables automatic cycling by default.
-    // An explicit click on the play button can re-enable it.
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     let mounted = true;
     queueMicrotask(() => {
-      if (mounted && query.matches) setPlaying(false);
+      if (mounted) setMotion(media.matches ? "reduced" : "regular");
     });
-    const onChange = (event: MediaQueryListEvent) => {
-      if (event.matches) setPlaying(false);
-    };
-    query.addEventListener("change", onChange);
+    const onChange = () => setMotion(media.matches ? "reduced" : "regular");
+    media.addEventListener("change", onChange);
     return () => {
       mounted = false;
-      query.removeEventListener("change", onChange);
+      media.removeEventListener("change", onChange);
     };
   }, []);
 
   useEffect(() => {
     const element = galleryRef.current;
     if (!element) return;
-
     if (typeof IntersectionObserver === "undefined") {
       const timer = window.setTimeout(() => setInView(true), 0);
       return () => window.clearTimeout(timer);
     }
-
     const observer = new IntersectionObserver(
       entries => setInView(entries.some(entry => entry.isIntersecting)),
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     );
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    const onVisibilityChange = () => setPageVisible(!document.hidden);
-    document.addEventListener("visibilitychange", onVisibilityChange);
-    return () => document.removeEventListener("visibilitychange", onVisibilityChange);
+    const update = () => setTabVisible(!document.hidden);
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
   }, []);
 
-  useEffect(() => {
-    if (!playing || !inView || !pageVisible || hovered || focused) return;
-    const timer = window.setTimeout(() => {
-      setCurrent(index => (index + 1) % photos.length);
-    }, intervalMs);
-    return () => window.clearTimeout(timer);
-  }, [current, playing, inView, pageVisible, hovered, focused]);
+  const onSelect = useCallback(() => {
+    if (emblaApi) setSelected(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
-  const handleKeys = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      go(-1);
-    }
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    onSelect();
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const plugin = emblaApi.plugins().autoplay;
+    if (shouldPlay && inView && tabVisible) plugin?.play();
+    else plugin?.stop();
+    return () => plugin?.stop();
+  }, [emblaApi, shouldPlay, inView, tabVisible]);
+
+  const navigate = useCallback(
+    (index: number) => {
+      emblaApi?.scrollTo(index);
+      emblaApi?.plugins().autoplay?.reset();
+    },
+    [emblaApi]
+  );
+  const next = () => {
+    emblaApi?.scrollNext();
+    emblaApi?.plugins().autoplay?.reset();
+  };
+  const previous = () => {
+    emblaApi?.scrollPrev();
+    emblaApi?.plugins().autoplay?.reset();
+  };
+  const onKeyboard = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      go(1);
-    }
-  };
-
-  const handleTouchStart = (event: TouchEvent<HTMLElement>) => {
-    touchStart.current = event.touches[0]?.clientX ?? null;
-  };
-
-  const handleTouchEnd = (event: TouchEvent<HTMLElement>) => {
-    const start = touchStart.current;
-    touchStart.current = null;
-    if (start === null) return;
-    const delta = event.changedTouches[0]?.clientX - start;
-    if (Math.abs(delta) >= 60) go(delta < 0 ? 1 : -1);
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLElement>) => {
-    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-      setFocused(false);
+      next();
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      previous();
     }
   };
 
   return (
-    <section
-      id="fotos"
-      ref={galleryRef}
-      className="section shell music-gallery-section"
-      aria-labelledby="music-gallery-title"
-      onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(true); }}
-      onPointerLeave={event => { if (event.pointerType === "mouse") setHovered(false); }}
-      onFocusCapture={() => setFocused(true)}
-      onBlurCapture={handleBlur}
-    >
+    <section id="fotos" ref={galleryRef} className="section shell music-gallery-section" aria-labelledby="music-gallery-title">
       <div className="music-gallery-heading">
         <div>
           <p className="eyebrow">Momentos del recorrido artístico</p>
           <h2 id="music-gallery-title">Escenario, identidad <em>y expresión.</em></h2>
           <p>Diez momentos de actuaciones, sesiones artísticas y participaciones en medios.</p>
         </div>
-        <div className="music-gallery-controls" role="group" aria-label="Controles de la galería">
-          <button type="button" aria-label="Fotografía anterior" onClick={() => go(-1)}>←</button>
-          <span aria-live={playing ? "off" : "polite"} aria-atomic="true">
-            {String(current + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
-          </span>
-          <button type="button" aria-label="Fotografía siguiente" onClick={() => go(1)}>→</button>
-          <button
-            type="button"
-            className="music-gallery-playback"
-            aria-label={playing ? "Pausar avance automático" : "Reanudar avance automático"}
-            aria-pressed={!playing}
-            onClick={() => setPlaying(value => !value)}
-          >
-            <span aria-hidden="true">{playing ? "Ⅱ" : "▶"}</span>
-            <span>{playing ? "Pausar" : "Reproducir"}</span>
-          </button>
-        </div>
       </div>
 
       <div
-        className="music-gallery-stage"
+        className="music-gallery-viewport"
+        ref={viewportRef}
         role="region"
         aria-roledescription="carrusel"
         aria-label="Diez fotografías del recorrido artístico de Tamara"
         tabIndex={0}
-        onKeyDown={handleKeys}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={() => { touchStart.current = null; }}
+        onKeyDown={onKeyboard}
       >
-        {photos.map((photo, index) => (
-          <figure
-            key={photo.src}
-            className="music-gallery-slide"
-            hidden={index !== current}
-            aria-label={`Imagen ${index + 1} de ${photos.length}`}
-          >
-            <div className="music-gallery-media">
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                width={photo.width}
-                height={photo.height}
-                sizes="(max-width: 768px) 92vw, 820px"
-                loading={index < 2 ? "eager" : "lazy"}
-                className="music-gallery-image"
-              />
-            </div>
-            <figcaption>
-              <span className="eyebrow">{photo.category}</span>
-              <span>{photo.caption}</span>
-            </figcaption>
-          </figure>
-        ))}
+        <div className="music-gallery-track">
+          {photos.map((photo, index) => (
+            <figure
+              key={photo.src}
+              className="music-gallery-slide"
+              role="group"
+              aria-roledescription="diapositiva"
+              aria-label={`Fotografía ${index + 1} de ${photos.length}`}
+              aria-hidden={index !== selected}
+            >
+              <div className="music-gallery-media">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 84vw, 840px"
+                  priority={index === 0}
+                  className="music-gallery-image"
+                />
+              </div>
+              <figcaption>
+                <span className="eyebrow">{photo.category}</span>
+                <span>{photo.caption}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
 
-      <div className="music-gallery-thumbnail-rail" role="group" aria-label="Elegir una fotografía">
-        {photos.map((photo, index) => (
+      <div className="music-gallery-footer">
+        <div className="music-gallery-controls" role="group" aria-label="Controles de la galería">
+          <button type="button" onClick={previous} aria-label="Fotografía anterior">←</button>
+          <span className="music-gallery-counter" aria-live="off" aria-atomic="true">
+            <strong>{String(selected + 1).padStart(2, "0")}</strong>
+            <span> / {String(photos.length).padStart(2, "0")}</span>
+          </span>
+          <button type="button" onClick={next} aria-label="Fotografía siguiente">→</button>
           <button
             type="button"
-            key={photo.src}
-            className={`music-gallery-thumb ${index === current ? "active" : ""}`}
-            aria-label={`Mostrar fotografía ${index + 1}: ${photo.caption}`}
-            aria-pressed={index === current}
-            onClick={() => setCurrent(index)}
+            className="music-gallery-playback"
+            aria-label={shouldPlay ? "Pausar avance automático" : "Reanudar avance automático"}
+            aria-pressed={!shouldPlay}
+            onClick={() => setPlayChoice(shouldPlay ? "pause" : "play")}
           >
-            <Image src={photo.src} alt="" width={112} height={85} sizes="112px" loading="lazy" />
+            <span aria-hidden="true">{shouldPlay ? "Ⅱ" : "▶"}</span>
           </button>
-        ))}
+        </div>
+        <div className="music-gallery-thumbnail-rail" role="group" aria-label="Elegir una fotografía">
+          {photos.map((photo, index) => (
+            <button
+              type="button"
+              key={photo.src}
+              className={`music-gallery-thumb ${index === selected ? "active" : ""}`}
+              aria-label={`Mostrar fotografía ${index + 1}: ${photo.caption}`}
+              aria-pressed={index === selected}
+              onClick={() => navigate(index)}
+            >
+              <Image src={photo.src} alt="" width={112} height={85} sizes="80px" />
+            </button>
+          ))}
+        </div>
       </div>
-      <p className="music-gallery-hint">
-        Las fotografías avanzan automáticamente cada 5 segundos. Podés usar las flechas, deslizar o seleccionar una miniatura; el avance se pausa mientras interactuás.
-      </p>
     </section>
   );
 }
