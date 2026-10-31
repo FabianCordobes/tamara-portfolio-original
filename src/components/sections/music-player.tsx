@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { googleDrivePreviewUrl, googleDriveVideoUrl, musicVideos } from "@/content/music";
+import { googleDrivePreviewUrl, musicVideos } from "@/content/music";
 
 export function MusicPlayer() {
-  const [selectedID, setSelectedID] = useState(musicVideos[0].id);
-  const selected = musicVideos.find((video) => video.id === selectedID) ?? musicVideos[0];
+  const publicVideos = musicVideos.filter(video => !/in[eé]dita/i.test(video.title));
+  const [selectedID, setSelectedID] = useState(publicVideos[0].id);
+  const selected = publicVideos.find((video) => video.id === selectedID) ?? publicVideos[0];
 
   return (
     <section className="section shell music-player-section" aria-labelledby="music-samples-heading">
@@ -23,7 +24,8 @@ export function MusicPlayer() {
                 src={googleDrivePreviewUrl(selected.id)}
                 title={`Video de Tamara Atadía: ${selected.title}`}
                 loading="lazy"
-                allow="fullscreen"
+                allow="fullscreen; encrypted-media"
+                sandbox="allow-scripts allow-same-origin allow-presentation"
                 allowFullScreen
               />
             </div>
@@ -32,13 +34,12 @@ export function MusicPlayer() {
             <p className="eyebrow">{selected.context}</p>
             <h3>{selected.title}</h3>
             <p>{selected.description}</p>
-            <a className="text-link" href={googleDriveVideoUrl(selected.id)} target="_blank" rel="noopener noreferrer">Abrir este video en Drive ↗</a>
           </div>
         </div>
         <div className="music-player-sidebar">
           <p className="eyebrow">Elegí una presentación</p>
           <div className="music-playlist" role="group" aria-label="Videos de Tamara">
-            {musicVideos.map((video,index) => (
+            {publicVideos.map((video,index) => (
               <button
                 type="button"
                 key={video.id}
@@ -52,7 +53,6 @@ export function MusicPlayer() {
               </button>
             ))}
           </div>
-          <p className="music-drive-note">Si un video no carga, podés abrirlo directamente desde su enlace a Drive.</p>
         </div>
       </div>
     </section>
