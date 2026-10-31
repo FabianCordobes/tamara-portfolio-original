@@ -920,3 +920,130 @@ button, input, select, textarea { font-family: inherit; }
   .music-editorial-card figcaption strong { font-size:.9rem; }
   .music-editorial-card figcaption span { font-size:.78rem; }
 }
+
+
+/* Embla photographic carousel: cinematic slides with adjacent previews */
+.music-gallery-section { padding-block:clamp(3rem,6vw,5.5rem); }
+.music-gallery-heading { margin-bottom:clamp(1.35rem,3vw,2rem); }
+.music-gallery-heading h2 { max-width:20ch; }
+.music-gallery-heading p:not(.eyebrow) { max-width:52ch; }
+.music-gallery-viewport {
+  overflow:hidden;
+  touch-action:pan-y pinch-zoom;
+  cursor:grab;
+  border-radius:1rem;
+  outline-offset:5px;
+}
+.music-gallery-viewport:active { cursor:grabbing; }
+.music-gallery-track {
+  display:flex;
+  gap:clamp(.7rem,1.4vw,1.35rem);
+  touch-action:pan-y pinch-zoom;
+}
+.music-gallery-slide {
+  flex:0 0 86%;
+  min-width:0;
+  margin:0;
+  padding:clamp(.6rem,1.4vw,1rem);
+  border:1px solid var(--color-line);
+  border-radius:1rem;
+  background:linear-gradient(145deg,#25221f,#181716 65%);
+}
+.music-gallery-media {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  width:100%;
+  height:clamp(310px,49vw,600px);
+  background:radial-gradient(ellipse at center,#36312c 0%,#161514 75%);
+  border-radius:.65rem;
+}
+.music-gallery-image {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.music-gallery-slide figcaption {
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:.5rem 1rem;
+  flex-wrap:wrap;
+  min-height:3.1rem;
+  padding:.95rem .5rem .2rem;
+  text-align:center;
+  color:var(--color-text);
+  font-size:.95rem;
+}
+.music-gallery-slide figcaption .eyebrow { font-size:.72rem; }
+.music-gallery-footer { display:grid; gap:1rem; margin-top:1.2rem; }
+.music-gallery-controls { display:flex; align-items:center; justify-content:center; gap:.7rem; }
+.music-gallery-controls button {
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:46px;
+  border:1px solid #796847;
+  border-radius:50%;
+  background:transparent;
+  color:var(--color-text);
+  font-size:1.3rem;
+  cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.music-gallery-controls button:hover { background:var(--color-accent); color:#141414; }
+.music-gallery-counter {
+  display:inline-flex;
+  gap:.25rem;
+  min-width:5.6rem;
+  justify-content:center;
+  align-items:baseline;
+  color:var(--color-muted);
+  font-size:.86rem;
+  font-variant-numeric:tabular-nums;
+}
+.music-gallery-counter strong { color:var(--color-accent); font-size:1.2rem; }
+.music-gallery-controls .music-gallery-playback { margin-left:.2rem; font-size:1rem; }
+.music-gallery-thumbnail-rail {
+  display:flex;
+  align-items:center;
+  justify-content:safe center;
+  gap:.55rem;
+  min-width:0;
+  overflow-x:auto;
+  padding:.2rem .15rem .65rem;
+  overscroll-behavior-inline:contain;
+  scrollbar-color:#7d6d52 transparent;
+}
+.music-gallery-thumb {
+  flex:0 0 76px;
+  width:76px;
+  height:63px;
+  padding:3px;
+  border:2px solid transparent;
+  border-radius:.55rem;
+  background:transparent;
+  cursor:pointer;
+  opacity:.64;
+  transition:opacity .2s,border-color .2s;
+}
+.music-gallery-thumb img { width:100%; height:100%; display:block; object-fit:cover; border-radius:.27rem; }
+.music-gallery-thumb:is(:hover,.active,:focus-visible) { opacity:1; }
+.music-gallery-thumb.active { border-color:var(--color-accent); }
+@media (max-width:640px) {
+  .music-gallery-slide { flex-basis:93%; }
+  .music-gallery-media { height:clamp(310px,95vw,470px); }
+  .music-gallery-slide figcaption { padding-block:.8rem .1rem; min-height:3.4rem; font-size:.85rem; }
+  .music-gallery-footer { margin-top:.9rem; }
+  .music-gallery-controls button { width:44px; height:44px; }
+  .music-gallery-thumbnail-rail { justify-content:flex-start; }
+  .music-gallery-thumb { flex-basis:68px; width:68px; height:58px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .music-gallery-controls button,
+  .music-gallery-thumb { transition:none; }
+}
