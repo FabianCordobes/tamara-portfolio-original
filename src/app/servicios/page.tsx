@@ -12,56 +12,54 @@ export const metadata: Metadata = {
 };
 
 const services = [
-  {
-    number: "01", name: "Estrategia de marketing y comunicación",
-    problem: "Cuando hay muchas ideas pero falta una dirección clara.",
-    offer: "Trabajo sobre el contexto, la audiencia y los objetivos para definir prioridades de posicionamiento, comunicación y próximas acciones.",
-    includes: "Diagnóstico, enfoque estratégico y planificación."
-  },
-  {
-    number: "02", name: "Comunicación, contenidos y posicionamiento",
-    problem: "Cuando una propuesta tiene valor, pero no logra expresarlo.",
-    offer: "Ayudo a ordenar mensajes, definir líneas de contenido y conectar la identidad del proyecto con las personas a las que quiere llegar.",
-    includes: "Mensajes, contenidos, canales y criterios de comunicación."
-  },
-  {
-    number: "03", name: "Desarrollo comercial y vinculación",
-    problem: "Cuando hace falta conectar visibilidad con oportunidades concretas.",
-    offer: "Aporto experiencia en comercialización, relacionamiento y articulación de propuestas con públicos, aliados y potenciales clientes.",
-    includes: "Oportunidades comerciales, propuestas de valor y coordinación."
-  },
-  {
-    number: "04", name: "Gestión y producción de proyectos",
-    problem: "Cuando una idea necesita equipo, organización y ejecución.",
-    offer: "Integro planificación, coordinación de personas, recursos y producción de experiencias, con foco en ordenar el proceso de trabajo.",
-    includes: "Etapas, responsabilidades, coordinación y seguimiento."
-  }
+  { number: "01", title: "Estrategia de marketing",
+    premise: "Cuando faltan prioridades claras",
+    detail: "Analizo el contexto y las audiencias para definir un enfoque de posicionamiento y un plan de acción.",
+    output: "Diagnóstico, objetivos y planificación." },
+  { number: "02", title: "Comunicación y contenidos",
+    premise: "Cuando el mensaje no llega",
+    detail: "Organizo qué comunicar, a quién, en qué canales y con qué identidad para que cada pieza tenga propósito.",
+    output: "Mensajes, contenidos y criterios de publicación." },
+  { number: "03", title: "Desarrollo comercial",
+    premise: "Cuando hay oportunidades por activar",
+    detail: "Aporto experiencia en ventas, vinculación institucional y propuestas comerciales para conectar con nuevos públicos.",
+    output: "Propuesta de valor, relaciones y acciones comerciales." },
+  { number: "04", title: "Producción y coordinación",
+    premise: "Cuando una idea necesita ejecución",
+    detail: "Planifico etapas y coordino personas, recursos y operaciones, especialmente en iniciativas y experiencias presenciales.",
+    output: "Organización, responsabilidades y seguimiento." }
 ];
 
 export default function ServiciosPage() {
   return (
     <>
-      <PageIntro eyebrow="01 / Para marcas, emprendimientos y organizaciones" title={<>Estrategia para crecer. <em>Gestión para avanzar.</em></>} description="Cada proyecto tiene desafíos propios. Puedo ayudarte a identificar prioridades, organizar el trabajo y convertir ideas en acciones concretas.">
-        <Link href="/contacto?motivo=servicio" className="button button-primary">Contame sobre tu proyecto ↗</Link>
-        <Link href="/proyectos" className="button button-secondary">Ver trabajos reales</Link>
+      <PageIntro eyebrow="Servicios / Para marcas y organizaciones"
+        title={<>Lo que necesitás resolver. <em>Cómo puedo aportar.</em></>}
+        description="Cada colaboración empieza por entender el problema. Estas son las áreas en las que puedo acompañarte.">
+        <Link href="/contacto?motivo=servicio" className="button button-primary">Consultar por un proyecto ↗</Link>
+        <Link href="/proyectos" className="text-link">Ver trabajos anteriores ↗</Link>
       </PageIntro>
       <section className="section shell" aria-labelledby="services-heading">
-        <div className="section-heading"><p className="eyebrow">Cómo puedo aportar</p><h2 id="services-heading">Servicios con una <em>mirada integral.</em></h2></div>
+        <div className="section-heading">
+          <p className="eyebrow">Áreas de trabajo</p>
+          <h2 id="services-heading">Cuatro formas de <em>sumar valor.</em></h2>
+        </div>
         <div className="services-grid">
-          {services.map((service) => (
+          {services.map(service => (
             <article key={service.number} className="service-card">
-              <span className="eyebrow">{service.number} / {service.problem}</span>
-              <h3>{service.name}</h3>
-              <p>{service.offer}</p>
-              <p className="service-deliverables"><strong>Podemos trabajar en:</strong> {service.includes}</p>
-              <Link className="text-link" href="/contacto?motivo=servicio">Consultar por este servicio ↗</Link>
+              <span className="eyebrow">{service.number} / {service.premise}</span>
+              <h3>{service.title}</h3>
+              <p>{service.detail}</p>
+              <p className="service-deliverables"><strong>En qué trabajamos:</strong> {service.output}</p>
             </article>
           ))}
         </div>
       </section>
       <Methodology />
       <ProjectPreview />
-      <CtaBand eyebrow="Empecemos a conversar" title="Tu proyecto merece una propuesta pensada para él." description="Contame qué estás construyendo, qué te gustaría mejorar o qué desafío necesitás resolver." href="/contacto?motivo=servicio" label="Solicitar una conversación" />
+      <CtaBand eyebrow="Consultas de servicios" title="¿Cuál es el desafío de tu proyecto?"
+        description="Compartime el contexto y vemos qué tipo de colaboración tiene sentido."
+        href="/contacto?motivo=servicio" label="Enviar consulta" />
     </>
   );
 }

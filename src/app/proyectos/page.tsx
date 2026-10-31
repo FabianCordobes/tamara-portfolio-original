@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Cases } from "@/components/sections/cases";
 import { CtaBand } from "@/components/sections/cta-band";
@@ -13,12 +12,13 @@ export const metadata: Metadata = {
 export default function ProyectosPage() {
   return (
     <>
-      <PageIntro eyebrow="Proyectos / Experiencia real" title={<>Distintos desafíos. <em>Un aporte concreto.</em></>} description="Conocé experiencias en comunicación, gestión ambiental, posicionamiento de negocios, emprendimientos y coordinación de eventos. Cada caso muestra el contexto, mis responsabilidades y el trabajo realizado.">
-        <Link className="button button-secondary" href="/servicios">Ver servicios</Link>
-        <Link className="button button-secondary" href="/perfil-profesional">Ver trayectoria profesional</Link>
-      </PageIntro>
+      <PageIntro eyebrow="Experiencia aplicada"
+        title={<>Cinco proyectos. <em>Trabajo real.</em></>}
+        description="Medios, gestión ambiental, fitness y cultura. En cada caso vas a encontrar el contexto, las tareas que asumí y materiales del proyecto." />
       <Cases />
-      <CtaBand eyebrow="¿Te interesa trabajar conmigo?" title="Hablemos de lo que necesitás." description="Podemos conversar sobre un proyecto puntual o una oportunidad laboral." href="/contacto" label="Contactar" />
+      <CtaBand eyebrow="Conocés mi trabajo" title="¿Querés explorar una colaboración?"
+        description="Contame qué tipo de participación estás buscando."
+        href="/contacto" label="Ponernos en contacto" />
     </>
   );
 }
