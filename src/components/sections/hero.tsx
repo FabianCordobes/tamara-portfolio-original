@@ -1,33 +1,24 @@
 import { profile } from "@/content/profile";
 import { ButtonLink } from "@/components/ui/button";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
+
 export function Hero() {
   return (
-    <section id="inicio" className="shell hero">
+    <section id="inicio" className="shell hero hero-redesign">
       <div className="hero-copy">
-        <p className="eyebrow">Portfolio profesional / Estrategia en acción</p>
-        <h1>
-          Estrategia que
-          <br />
-          se convierte
-          <br />
-          en <em>acción.</em>
-        </h1>
-        <p className="hero-intro">{profile.intro}</p>
-        <div className="flex flex-wrap gap-3">
-          <ButtonLink href="#proyectos">Explorar experiencia</ButtonLink>
-          <ButtonLink href="#contacto" variant="secondary">
-            Conversemos
-          </ButtonLink>
+        <p className="eyebrow">Tamara Atadía · Marketing, comunicación y proyectos</p>
+        <h1>Ideas claras.<br />Equipos conectados.<br /><em>Proyectos que avanzan.</em></h1>
+        <p className="hero-intro">Soy Tamara Atadía. Conecto estrategia de comunicación, desarrollo comercial y gestión de personas para transformar desafíos en planes de acción concretos.</p>
+        <div className="hero-actions">
+          <ButtonLink href="/servicios">Quiero impulsar un proyecto ↗</ButtonLink>
+          <ButtonLink href="/perfil-profesional" variant="secondary">Busco incorporar talento</ButtonLink>
         </div>
-        <p className="hero-signature">
-          Marketing y Comunicación · Gestión de proyectos
-        </p>
+        <p className="hero-signature">{profile.positioning}</p>
       </div>
       <MediaPlaceholder media={{ src: "/images/tamara-atadia.png", alt: "Retrato de Tamara Atadía", width: 1254, height: 1254 }} />
       <div className="hero-bottom">
-        <span>TAMARA ATADÍA</span>
-        <span>Estrategia / Liderazgo / Creatividad / Ejecución</span>
+        <span>ESTRATEGIA / LIDERAZGO / CREATIVIDAD / EJECUCIÓN</span>
+        <a href="#elegir-recorrido">Elegí cómo podemos trabajar juntos ↓</a>
       </div>
     </section>
   );

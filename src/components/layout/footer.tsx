@@ -1,16 +1,27 @@
-import { ButtonLink } from "@/components/ui/button";
+import Link from "next/link";
+
 export function Footer() {
   return (
-    <footer id="contacto" className="contact-footer">
+    <footer className="contact-footer">
       <div className="shell">
-        <p className="eyebrow">Conversemos</p>
-        <h2>Convirtamos una oportunidad en <em>acción.</em></h2>
-        <p>Si tenés un proyecto o una oportunidad profesional, contactame por LinkedIn. Contame qué necesitás y conversemos sobre cómo puedo aportar.</p>
-        <ButtonLink href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">Contactar por LinkedIn ↗</ButtonLink>
+        <div className="footer-cta-grid">
+          <div>
+            <p className="eyebrow">¿Tenés un proyecto?</p>
+            <h2>Las buenas ideas merecen <em>avanzar.</em></h2>
+            <p>Contame qué necesitás resolver y veamos cómo podemos trabajar juntos.</p>
+            <Link className="button button-primary" href="/contacto?motivo=servicio">Quiero contratar un servicio ↗</Link>
+          </div>
+          <div>
+            <p className="eyebrow">¿Buscás talento?</p>
+            <h2>Conectemos <em>experiencias.</em></h2>
+            <p>Conocé mi trayectoria o contactame por una oportunidad profesional.</p>
+            <Link className="button button-secondary" href="/contacto?motivo=empleo">Quiero contactar por empleo ↗</Link>
+          </div>
+        </div>
         <div className="footer-bottom">
-          <span>Tamara Atadía</span>
-          <a href="#inicio">Volver al inicio</a>
-          <span>Marketing y Comunicación</span>
+          <span>© {new Date().getFullYear()} Tamara Atadía</span>
+          <a href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <Link href="/">Volver al inicio ↑</Link>
         </div>
       </div>
     </footer>

@@ -1,0 +1,30 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PageIntro } from "@/components/layout/page-intro";
+import { Profile } from "@/components/sections/profile";
+import { SelectedExperience } from "@/components/sections/selected-experience";
+import { Education } from "@/components/sections/education";
+import { ProjectPreview } from "@/components/sections/project-preview";
+import { CtaBand } from "@/components/sections/cta-band";
+
+export const metadata: Metadata = {
+  title: "Perfil profesional y trayectoria",
+  description: "Conocé la experiencia profesional de Tamara Atadía en marketing, comunicación, liderazgo, desarrollo comercial, medios y gestión de proyectos.",
+  alternates: { canonical: "/perfil-profesional" }
+};
+
+export default function PerfilProfesionalPage() {
+  return (
+    <>
+      <PageIntro eyebrow="02 / Para empresas y reclutadores" title={<>Visión estratégica. <em>Capacidad de ejecución.</em></>} description="Mi recorrido integra comunicación, marketing, desarrollo comercial y coordinación de equipos en proyectos de diferentes sectores. Me interesa sumar esa mirada a nuevos desafíos profesionales.">
+        <Link className="button button-primary" href="/contacto?motivo=empleo">Contactar por una oportunidad ↗</Link>
+        <a className="button button-secondary" href="https://www.linkedin.com/in/tamaraatadia/" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
+      </PageIntro>
+      <Profile />
+      <SelectedExperience />
+      <Education />
+      <ProjectPreview />
+      <CtaBand eyebrow="Oportunidades profesionales" title="¿Buscás sumar experiencia y compromiso a tu equipo?" description="Podés contactarme para compartir el rol, la empresa y el desafío que están abordando. El CV actualizado puede solicitarse por contacto." href="/contacto?motivo=empleo" label="Contactar a Tamara" />
+    </>
+  );
+}

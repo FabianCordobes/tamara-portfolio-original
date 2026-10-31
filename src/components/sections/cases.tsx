@@ -8,7 +8,7 @@ export function Cases() {
         <SectionHeading number="03" label="Proyectos seleccionados" title="Distintos desafíos. Un aporte concreto." />
         <div className="case-list">
           {cases.map((project, index) => (
-            <article key={project.id} className={`case-study case-${project.id}`}>
+            <article key={project.id} id={`caso-${project.id}`} className={`case-study case-${project.id}`}>
               <div className="case-intro">
                 <div className="case-topline"><span className="eyebrow">0{index + 1} / {project.category}</span><span className="case-brand">{project.logo && <Image className="case-logo" src={project.logo} alt={`Logo de ${project.name}`} width={72} height={72} sizes="72px" />}<span className="case-name">{project.name}</span></span></div>
                 <p className="case-period">{project.period}</p>
