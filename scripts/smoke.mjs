@@ -14,14 +14,17 @@ const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "star
 });
 
 const checks = [
-  ["/", ["Necesito impulsar una marca", "Busco una profesional", "Busco una cantante", "Consultar por un proyecto", "Proyectos reales", "Full Medios", "Brush Fest"]],
-  ["/servicios", ["Estrategia de marketing", "Desarrollo comercial", "Producción y coordinación"]],
-  ["/proyectos", ["Full Medios", "Milpos", "Strong Fitness Gym", "Tamms", "Brush Fest"]],
-  ["/perfil-profesional", ["LinkedIn", "Sobre mí", "Formación"]],
-  ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Momentos del recorrido artístico"]],
-  ["/contacto?motivo=musica", ["Formulario de contacto", "Propuesta artística o casting", "contact-form-title"]],
+  ["/", ["Quiero desarrollar o transformar mi negocio", "Necesito producir y dirigir un proyecto", "Necesito fortalecer mi comunicación", "Conversemos sobre tu proyecto", "Full Medios", "Tamms", "Brush Fest", "Universo creativo"]],
+  ["/servicios", ["Estrategia y desarrollo de negocios", "Producción y dirección de proyectos", "Comunicación y posicionamiento", "Desarrollo comercial", "Dirección y coordinación"]],
+  ["/metodologia", ["Comprender", "Definir", "Diseñar", "Producir y ejecutar", "Evaluar", "Evolucionar"]],
+  ["/proyectos", ["Full Medios", "Milpos", "Strong Fitness Gym", "Tamms", "Brush Fest", "Planificación y ejecución"]],
+  ["/perfil-profesional", ["LinkedIn", "Sobre mí", "Trayectoria", "Formación"]],
+  ["/musica", ["Ruta 66", "Melódico romántico", "Folklore", "Expresión chacarera", "Momentos del recorrido artístico", "Universo creativo"]],
+  ["/contacto?motivo=musica", ["Formulario de contacto", "Colaboración artística", "contact-form-title"]],
   ["/contacto?motivo=empleo", ["Formulario de contacto", "Oportunidad profesional"]],
-  ["/contacto?motivo=servicio", ["Formulario de contacto", "Proyecto o consultoría"]]
+  ["/contacto?motivo=produccion", ["Formulario de contacto", "Producción y dirección de proyectos"]],
+  ["/contacto?motivo=servicio", ["Formulario de contacto", "Estrategia y desarrollo de negocios"]],
+  ["/privacidad", ["Privacidad", "Formspree"]]
 ];
 
 async function ready() {
@@ -56,7 +59,8 @@ try {
     for (const value of snippets) assert.ok(html.includes(value), `${route}: ${value}`);
     if (route === "/") {
       assert.ok(html.includes("home-proof"), "Home has factual proof section");
-      assert.ok(html.includes("/contacto?motivo=servicio"), "Home provides a direct contact route");
+      assert.ok(html.includes("Universo creativo"), "Creative identity remains accessible");
+      assert.ok(html.includes("/contacto?motivo=proyectos"), "Home provides a direct contact route");
       assert.ok(html.includes("contact_cta_click"), "Home CTA analytics are wired");
       assert.ok(html.includes('name="twitter:card"'), "Social card metadata is present");
       assert.ok(html.includes('property="og:image"'), "Open Graph image metadata is present");
@@ -64,6 +68,20 @@ try {
     for (const name of allExtraPhotos) {
       const shouldShow = (extraPhotos[route] ?? []).includes(name);
       assert.equal(html.includes(`/images/projects/${name}`), shouldShow, `Photo placement ${name} on ${route}`);
+    }
+    if (route === "/servicios") {
+      for (const id of ["estrategia", "produccion", "comunicacion", "comercial", "direccion"]) {
+        assert.ok(html.includes(`id="${id}"`), `Solutions anchor ${id}`);
+      }
+    }
+    if (route.startsWith("/contacto")) {
+      assert.ok(html.includes('name="company"'), "Optional organization field");
+      assert.ok(html.includes('name="siteUrl"'), "Optional website field");
+      assert.ok(html.includes('/privacidad'), "Privacy information linked");
+    }
+    if (route === "/proyectos") {
+      assert.ok(!html.includes('class="case-results"'), "Unverified numeric metrics are hidden");
+      assert.ok(html.includes("Contexto, decisiones y ejecución"), "Case process is navigable");
     }
     if (route === "/musica") {
       assert.ok(html.includes("sandbox="), "Preview sandbox");
@@ -127,7 +145,7 @@ try {
     body: JSON.stringify({
       name: "Nombre de prueba",
       email: "ejemplo@example.com",
-      intent: "Proyecto o consultoría",
+      intent: "Estrategia y desarrollo de negocios",
       message: "Esta consulta sirve para verificar las validaciones del endpoint.",
       consent: false,
       startedAt: Date.now(),
@@ -141,7 +159,7 @@ try {
     body: JSON.stringify({
       name: "Nombre de prueba",
       email: "ejemplo@example.com",
-      intent: "Proyecto o consultoría",
+      intent: "Estrategia y desarrollo de negocios",
       message: "Esta consulta verifica que no se envíen datos sin configurar Formspree.",
       consent: true,
       startedAt: Date.now(),
