@@ -41,7 +41,8 @@ try {
       assert.ok(html.includes("sandbox="), "Preview sandbox");
       assert.ok(!html.includes("Abrir este video"), "No external video action");
       assert.equal((html.match(/class="music-track /g) ?? []).length, 4, "Four public videos");
-      assert.equal((html.match(/class="music-gallery-slide"/g) ?? []).length, 2, "Two real stage photographs");
+      assert.equal((html.match(/class="music-gallery-slide"/g) ?? []).length, 10, "Ten curated artistic photographs");
+      assert.ok(html.includes("music-gallery-thumbnail-rail"), "Carousel thumbnail navigation");
     }
     if (route.startsWith("/contacto")) {
       assert.ok(html.includes('<form'), "Contact form available on every route");
