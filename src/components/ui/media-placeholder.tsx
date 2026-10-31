@@ -5,7 +5,8 @@ export function MediaPlaceholder({ media }: { media?: ProjectMedia }) {
     <div className="portrait">
       {media ? (
         <Image
-          loading="eager"
+          preload
+          fetchPriority="high"
           src={media.src}
           alt={media.alt}
           width={media.width}

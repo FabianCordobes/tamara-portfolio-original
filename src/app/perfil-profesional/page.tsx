@@ -8,8 +8,8 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { socialLinks } from "@/content/social";
 
 export const metadata: Metadata = {
-  title: "Trayectoria profesional",
-  description: "Conocé la trayectoria de Tamara Atadía en marketing, comunicación, ventas, medios, coordinación y proyectos culturales.",
+  title: "Trayectoria en marketing, medios y gestión de equipos",
+  description: "Experiencia de Tamara Atadía en comunicación, marketing, desarrollo comercial, medios, coordinación y gestión de equipos.",
   alternates: { canonical: "/perfil-profesional" }
 };
 

@@ -1047,3 +1047,46 @@ button, input, select, textarea { font-family: inherit; }
   .music-gallery-controls button,
   .music-gallery-thumb { transition:none; }
 }
+
+/* Conversion audit: editorial proof instead of duplicating full case-study cards */
+.hero-tertiary-link {
+  display:inline-flex;
+  min-height:44px;
+  align-items:center;
+  margin-top:.65rem;
+  color:#d1bc93;
+  font-size:.9rem;
+  text-decoration:underline;
+  text-decoration-color:#76613d;
+  text-underline-offset:4px;
+}
+.hero-tertiary-link:hover { color:#f0d18f; }
+.home-proof {
+  display:grid;
+  gap:clamp(1.5rem,4vw,4.5rem);
+  align-items:start;
+}
+.home-proof-intro h2 { max-width:21ch; }
+.home-proof-intro > p:last-child { max-width:44ch; color:#d5d0c9; }
+.home-proof-list { display:grid; gap:0; }
+.home-proof-item {
+  display:grid;
+  gap:1.1rem;
+  padding:1.6rem 0;
+  border-top:1px solid var(--color-line);
+}
+.home-proof-item h3 { margin:.45rem 0 .7rem; font-size:clamp(1.5rem,2.4vw,2.15rem); }
+.home-proof-item > div:first-child > p:last-child { max-width:51ch; }
+.home-proof-outcome { display:flex; flex-direction:column; align-items:start; gap:.2rem; }
+.home-proof-outcome strong { color:var(--color-accent); font-size:clamp(1.8rem,3vw,2.7rem); line-height:1.15; }
+.home-proof-outcome > span { color:var(--color-muted); font-size:.86rem; max-width:27ch; }
+.home-proof-outcome .text-link { margin-top:.45rem; }
+.home-proof-all { display:inline-flex; width:fit-content; border-top:1px solid var(--color-line); padding-top:1rem; font-weight:650; }
+@media (min-width:760px) {
+  .home-proof { grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr); }
+  .home-proof-item { grid-template-columns:minmax(0,1.5fr) minmax(140px,.7fr); }
+}
+@media (max-width:639px) {
+  .hero-redesign .hero-actions > .button { flex:1 1 100%; }
+  .hero-tertiary-link { line-height:1.5; }
+}
