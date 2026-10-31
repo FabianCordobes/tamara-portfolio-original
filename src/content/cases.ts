@@ -1,6 +1,7 @@
 export type PortfolioCase = {
   broadcast?: { embed: string; url: string; caption: string };
   gallery?: { src: string; alt: string; caption: string; url: string }[];
+  highlights?: { src: string; alt: string; caption: string }[];
   reel?: { embed: string; url: string; caption: string };
   featuredProject?: { name: string; title: string; period: string; paragraphs: string[] };
   sample?: { src: string; alt: string; caption: string; url: string; width?: number; height?: number };
@@ -103,6 +104,18 @@ export const cases: PortfolioCase[] = [
     period: "2020 – 2024",
     instagram: "https://www.instagram.com/tammsoficial/",
     logo: "/images/logos/tamms.jpg",
+    highlights: [
+      {
+        src: "/images/projects/tamms-escenario.jpg",
+        alt: "Presentación artística de alumnos de Tamms sobre el escenario",
+        caption: "Encuentro artístico y muestra de alumnos de Tamms"
+      },
+      {
+        src: "/images/projects/tamms-evento.jpg",
+        alt: "Registro fotográfico de un evento de Tamms",
+        caption: "Registro de evento · Archivo del proyecto Tamms"
+      }
+    ],
     headline: "De una idea a un emprendimiento con identidad propia.",
     challenge: "Desarrollé un emprendimiento gastronómico que amplió su propuesta con actividades formativas y encuentros presenciales.",
     role: "Definición de identidad, dirección de la operación y articulación de equipos, programación de actividades y desarrollo comercial.",

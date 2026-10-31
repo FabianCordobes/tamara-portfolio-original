@@ -1090,3 +1090,93 @@ button, input, select, textarea { font-family: inherit; }
   .hero-redesign .hero-actions > .button { flex:1 1 100%; }
   .hero-tertiary-link { line-height:1.5; }
 }
+
+
+/* Editorial project imagery: unique assets for each page, independent of the music carousel. */
+.project-photo { margin: 0; min-width: 0; }
+.project-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #151514;
+  border: 1px solid var(--color-line);
+  border-radius: .75rem;
+  overflow: hidden;
+}
+.project-photo-frame img {
+  display: block;
+  object-fit: cover;
+}
+.project-photo--document .project-photo-frame {
+  aspect-ratio: 3 / 4;
+  max-width: 320px;
+}
+.project-photo--document .project-photo-frame img {
+  object-fit: contain;
+}
+.project-photo figcaption {
+  margin-top: .65rem;
+  max-width: 54ch;
+  color: var(--color-muted);
+  font-size: .8rem;
+  line-height: 1.55;
+}
+.home-proof-photo {
+  margin-top: 1.4rem;
+  max-width: 440px;
+}
+.home-proof-photo .project-photo-frame {
+  aspect-ratio: 16 / 10;
+}
+.editorial-photo-feature {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  min-width: 0;
+}
+.service-photo-feature {
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+  border-top: 1px solid var(--color-line);
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+.editorial-photo-copy h2,
+.editorial-photo-copy h3 {
+  max-width: 21ch;
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  line-height: 1.13;
+  margin: .8rem 0 1rem;
+}
+.editorial-photo-copy > p:not(.eyebrow) {
+  max-width: 55ch;
+}
+.editorial-photo-copy .text-link { margin-top: .8rem; }
+.professional-photo-feature {
+  border-top: 1px solid var(--color-line);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.professional-photo-feature .project-photo { max-width: 640px; }
+.case-highlight-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 1.75rem 1.75rem;
+}
+.case-highlight-photo .project-photo-frame { aspect-ratio: 4 / 3; }
+@media (min-width: 760px) {
+  .editorial-photo-feature {
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  }
+  .case-highlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-photo { scroll-behavior: auto; }
+}
+
+/* The Tamms formation image is portrait (530 × 640); preserve the full composition. */
+.project-photo--portrait .project-photo-frame {
+  aspect-ratio: 530 / 640;
+  max-width: 440px;
+}
+.project-photo--portrait .project-photo-frame img {
+  object-fit: contain;
+}

@@ -35,6 +35,17 @@ async function ready() {
 
 try {
   await ready();
+  const extraPhotos = {
+    "/": ["full-medios-estudio.jpg"],
+    "/servicios": ["brush-fest-programacion.jpg"],
+    "/perfil-profesional": ["tamms-formacion.jpg"],
+    "/proyectos": ["tamms-escenario.jpg", "tamms-evento.jpg"]
+  };
+  const allExtraPhotos = Object.values(extraPhotos).flat();
+  assert.equal(new Set(allExtraPhotos).size, 5, "Project photos have unique page placements");
+  for (const name of allExtraPhotos) {
+    assert.ok(existsSync(new URL(`../public/images/projects/${name}`, import.meta.url)), `Existing project photo: ${name}`);
+  }
   for (const [route, snippets] of checks) {
     const res = await fetch(host + route);
     assert.equal(res.status, 200, route);
@@ -49,6 +60,10 @@ try {
       assert.ok(html.includes("contact_cta_click"), "Home CTA analytics are wired");
       assert.ok(html.includes('name="twitter:card"'), "Social card metadata is present");
       assert.ok(html.includes('property="og:image"'), "Open Graph image metadata is present");
+    }
+    for (const name of allExtraPhotos) {
+      const shouldShow = (extraPhotos[route] ?? []).includes(name);
+      assert.equal(html.includes(`/images/projects/${name}`), shouldShow, `Photo placement ${name} on ${route}`);
     }
     if (route === "/musica") {
       assert.ok(html.includes("sandbox="), "Preview sandbox");

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cases } from "@/content/cases";
+import { ProjectPhoto } from "@/components/ui/project-photo";
 export function Cases() {
   return (
     <section id="proyectos" className="section cases-section" aria-labelledby="experiences-heading">
@@ -17,6 +18,13 @@ export function Cases() {
                 <p><strong className="text-accent">Mi responsabilidad:</strong> {project.role}</p>
               </div>
               {project.results.length > 0 && <dl className="case-results">{project.results.map(result => <div key={`${result.value}-${result.label}`}><dt>{result.value}</dt><dd>{result.label}</dd></div>)}</dl>}
+              {project.highlights && (
+                <div className="case-highlight-grid" aria-label={`Registros de ${project.name}`}>
+                  {project.highlights.map(photo => (
+                    <ProjectPhoto key={photo.src} {...photo} className="case-highlight-photo" />
+                  ))}
+                </div>
+              )}
               <details className="case-details">
                 <summary><span>Ver proceso y material <span className="sr-only">de {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
                 <div className="case-expanded"><a className="case-social" href={project.instagram} target="_blank" rel="noopener noreferrer">Ver {project.name} en Instagram ↗</a></div>
