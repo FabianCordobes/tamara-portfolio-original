@@ -1,6 +1,4 @@
-/** Material artístico seleccionado de la carpeta que compartió Tamara.
- * Los permisos de reproducción pública de Google Drive deben validarse antes de publicar.
- */
+/** Public selections only. */
 export type MusicVideo = {
   id: string;
   title: string;
@@ -34,20 +32,8 @@ export const musicVideos: MusicVideo[] = [
     context: "Interpretación audiovisual",
     orientation: "landscape",
     duration: ""
-  },
-  {
-    id: "1JR3tMfqlsG754DWud4OlLAsFDETc0zYZ",
-    title: "Canción inédita",
-    description: "Registro de una interpretación en un espacio cercano al público.",
-    context: "Presentación íntima",
-    orientation: "portrait",
-    duration: "0:22"
   }
 ];
-
-export function googleDriveVideoUrl(id: string) {
-  return `https://drive.google.com/file/d/${id}/view`;
-}
 
 export function googleDrivePreviewUrl(id: string) {
   return `https://drive.google.com/file/d/${id}/preview`;
