@@ -5,7 +5,7 @@ export function Cases() {
   return (
     <section id="proyectos" className="section cases-section">
       <div className="shell">
-        <SectionHeading number="03" label="Proyectos seleccionados" title="Distintos desafíos. Un aporte concreto." />
+        <SectionHeading number="01" label="Casos de trabajo" title="Qué hice en cada proyecto." />
         <div className="case-list">
           {cases.map((project, index) => (
             <article key={project.id} id={`caso-${project.id}`} className={`case-study case-${project.id}`}>
@@ -19,7 +19,7 @@ export function Cases() {
               </div>
               {project.results.length > 0 && <dl className="case-results">{project.results.map(result => <div key={`${result.value}-${result.label}`}><dt>{result.value}</dt><dd>{result.label}</dd></div>)}</dl>}
               <details className="case-details">
-                <summary><span>Conocer el trabajo <span className="sr-only">en {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
+                <summary><span>Ver proceso y material <span className="sr-only">de {project.name}</span></span><span className="details-icon" aria-hidden="true">+</span></summary>
                 <div className="case-expanded"><a className="case-social" href={project.instagram} target="_blank" rel="noopener noreferrer">Ver {project.name} en Instagram ↗</a></div>
                 {project.featuredProject && <div className="case-expanded">
                   <div><p className="eyebrow">{project.featuredProject.period}</p><h4>{project.featuredProject.name} — {project.featuredProject.title}</h4></div>

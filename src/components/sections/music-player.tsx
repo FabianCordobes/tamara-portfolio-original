@@ -11,8 +11,8 @@ export function MusicPlayer() {
     <section className="section shell music-player-section" aria-labelledby="music-samples-heading">
       <div className="section-heading">
         <p className="eyebrow">Selección audiovisual</p>
-        <h2 id="music-samples-heading">Escuchame y conocé mi <em>universo musical.</em></h2>
-        <p>Elegí una interpretación para reproducirla desde esta misma página, sin descargar el archivo.</p>
+        <h2 id="music-samples-heading">Interpretaciones para <em>escuchar.</em></h2>
+        <p>Seleccioná un video para reproducirlo acá.</p>
       </div>
       <div className="music-player-layout">
         <div className="music-player-screen">
@@ -23,7 +23,7 @@ export function MusicPlayer() {
                 src={googleDrivePreviewUrl(selected.id)}
                 title={`Video de Tamara Atadía: ${selected.title}`}
                 loading="lazy"
-                allow="fullscreen; autoplay"
+                allow="fullscreen"
                 allowFullScreen
               />
             </div>
@@ -52,7 +52,7 @@ export function MusicPlayer() {
               </button>
             ))}
           </div>
-          <p className="music-drive-note">Los videos se reproducen desde Google Drive. El acceso requiere que los archivos estén compartidos para cualquier persona con el enlace; si un reproductor no abre, usá su enlace a Drive.</p>
+          <p className="music-drive-note">Si un video no carga, podés abrirlo directamente desde su enlace a Drive.</p>
         </div>
       </div>
     </section>
